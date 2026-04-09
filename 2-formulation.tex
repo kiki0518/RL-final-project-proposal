@@ -1,9 +1,15 @@
 \section{Problem Formulation}
-Please use 1-2 paragraphs to concisely describe your problem in a concrete way. For example:
-\begin{itemize}
-    \item Describe the environment model that you consider, e.g., MDPs, partially-observable MDPs, bandits, and adversarial setting.
-    \item Describe the information available to the RL learner.
-    \item Specify the reward or feedback signal available, e.g., typical scalar rewards, preference feedback, expert demonstrations, non-expert demonstrations, multi-objective reward vectors, or unsupervised settings.
-    \item Specify the optimization problem of your project (including the objective function and the constraints, if any).
-    \item Specify the assumptions that you may want to make.
-\end{itemize}
+% Please use 1-2 paragraphs to concisely describe your problem in a concrete way. For example:
+% \begin{itemize}
+%     \item Describe the environment model that you consider, e.g., MDPs, partially-observable MDPs, bandits, and adversarial setting.
+%     \item Describe the information available to the RL learner.
+%     \item Specify the reward or feedback signal available, e.g., typical scalar rewards, preference feedback, expert demonstrations, non-expert demonstrations, multi-objective reward vectors, or unsupervised settings.
+%     \item Specify the optimization problem of your project (including the objective function and the constraints, if any).
+%     \item Specify the assumptions that you may want to make.
+% \end{itemize}
+
+We formulate Image Difference Captioning (IDC) as a Markov Decision Process (MDP) defined by the tuple $\mathcal{M} := (\mathcal{S}, \mathcal{A}, \mathcal{P}, \gamma, r)$. The state space $\mathcal{S}$ consists of triples $s_t = (X_1, X_2, y_{1:t-1})$, where $(X_1, X_2)$ is a pair of visually similar images and $y_{1:t-1}$ is the sequence of previously generated tokens. The action space $\mathcal{A}$ is the vocabulary of the Multimodal Large Language Model (MLLM), where an action $a_t$ corresponds to selecting the next token $y_t$. The transition $\mathcal{P}: \mathcal{S} \times \mathcal{A} \rightarrow \mathcal{S}$ is deterministic, defined by appending $y_t$ to the current sequence. The reward function $r: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ provides a scalar signal evaluating the faithfulness and precision of the described differences.Our goal is to learn an optimal policy $\pi_\theta: \mathcal{S} \rightarrow \Delta(\mathcal{A})$ that maximizes the expected cumulative reward while maintaining linguistic stability. We optimize the following objective using Proximal Policy Optimization (PPO):
+\begin{equation}
+\max_{\theta} \mathbb{E}{\tau \sim \pi{\theta}} \left[ \sum_{t=0}^{T} \gamma^t r(s_t, a_t) \right] - \beta \mathbb{D}{\text{KL}}(\pi{\theta} || \pi_{\text{ref}})
+\end{equation}
+where $\pi_{\text{ref}}$ is a frozen reference policy to prevent catastrophic forgetting. We assume the image pairs $(X_1, X_2)$ exhibit high semantic similarity, with over 88\% rated as "very similar" or "almost identical," requiring the policy to isolate subtle, localized changes rather than holistic scene descriptions.
