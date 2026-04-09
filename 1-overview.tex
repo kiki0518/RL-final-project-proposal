@@ -1,24 +1,30 @@
+\documentclass{article}
+
+\begin{document}
+
 \section{Project Overview}
 \label{section:intro}
 
 \subsection{Profile}
 % Please create a brief profile of your project. You may want to discuss the following aspects
 
-\paragraph{Track: 1. Algorithm / 2. Dataset and Benchmark / 3. Application}
+\paragraph{Track: 3. Application}
 
 % An absract of about 4-8 sentences describing the overarching goal of your project
 \paragraph{Abstract and project goal:}
+Image Difference Captioning (IDC) requires generating a natural-language description that highlights subtle differences between a visually similar image pair. The ADPO framework trains an IDC captioning policy via pairwise preference optimisation with Direct Preference Optimisation (DPO) under a Bradley–Terry–Luce model, and strengthens learning by adversarially retrieving hard “counterfactual” negative captions. DPO is attractive because it optimises the same KL-regularised reward-maximisation objective as common RLHF pipelines using a simple preference-classification loss, avoiding explicit reward modelling and on-policy reinforcement learning. However, ADPO notes that IDC learning is sensitive to the quality of negative captions, and targeted poisoning analyses show DPO-style objectives can be vulnerable in backdoor settings. In this project, our goal is to replace DPO-based policy updates in IDC with on-policy reinforcement learning, comparing Proximal Policy Optimisation (PPO) and Group Relative Policy Optimisation (GRPO), where GRPO estimates baselines from group scores and removes the critic to reduce training resources. We further integrate a contrastive objective inspired by contrastive language–image pretraining to pull visually faithful difference descriptions closer in embedding space while pushing counterfactual or visually misaligned captions away during reinforcement learning updates. We will evaluate the resulting policies on standard IDC benchmarks and metrics used in prior IDC work (BLEU, METEOR, ROUGE-L, CIDEr), and compare against DPO/ADPO baselines under matched training data and negative-sampling conditions.
 
 % A short sentence describing your project
 \paragraph{TL;DR (``Too Long; Didn't Read"):}
+We propose replacing DPO-based training for Image Difference Captioning with on-policy reinforcement learning (PPO/GRPO) enhanced by contrastive objectives to improve robustness and visual fidelity, while addressing sensitivity to negative samples and vulnerabilities in preference-based optimisation.
 
 \subsection{Motivation}
 Please motivate your topic by highlighting why you'd like to work on this project. Specifically, please describe the following aspects: 
 \begin{itemize}
-    \item Why is the problem interesting?
-    \item Describe 1-3 most critical challenges that you can think of regarding this RL problem. Please write them down clearly as ``Challenge 1: $\cdots$"; ``Challenge 2: $\cdots$."
-    \item Justify why the problem remains open or unsolved? Please also name a few most relevant prior works (e.g., 3-5 papers published in the last 2 years and 2-3 seminal papers in that field) as a justification. 
-    \item Specify which work(s) is the state-of-the-art method in your opinion.
+    \item Why is the problem interesting? Image Difference Captioning (IDC) is a challenging vision-language task where models must describe subtle, localized differences between highly similar image pairs while preserving shared context. Prior work shows that most IDC samples are near-duplicates, making fine-grained visual grounding essential rather than generic captioning. IDC is also naturally framed as preference-based policy learning under a Bradley–Terry–Luce model, making it a strong testbed for comparing Direct Preference Optimization (DPO) with on-policy reinforcement learning.
+    \item Critical challenges. Challenge 1: IDC learning depends heavily on negative caption quality. Weak or irrelevant negatives reduce the task to trivial discrimination, while generating semantically close but incorrect counterfactuals remains difficult and imperfect. Challenge 2: Stable RL for sequence generation is non-trivial. PPO improves stability via clipped updates but requires an actor–critic setup with a learned value function, increasing computational cost and complexity. Challenge 3: Preference-based alignment is vulnerable to reward misspecification and poisoning. Small fractions of adversarial preference data can significantly distort model behavior, leading to reward hacking or alignment drift.
+    \item Justify why the problem remains open or unsolved. Existing IDC approaches either rely on supervised fine-tuning, which overfits dataset-specific phrasing, or DPO-based optimization, which is highly sensitive to negative sampling. ADPO improves performance through adversarial negatives but still relies on DPO and acknowledges unresolved issues in negative filtering. This leaves open whether on-policy RL can better utilize preference signals. PPO provides stable policy optimization, while GRPO removes the critic via group-based baselines, improving efficiency for large models. Additionally, contrastive language–image learning (e.g., CLIP) suggests embedding-level alignment as a principled way to enforce visual faithfulness. Recent works include ADPO (2025), GRPO in DeepSeekMath (2024), and studies on poisoning in RLHF (2024–2025), while seminal works include PPO (2017), RLHF/InstructGPT (2022), and CLIP (2021).
+    \item State-of-the-art methods. ADPO is the strongest IDC baseline due to its combination of DPO with adversarial hard-negative retrieval. PPO is the standard RL baseline, and GRPO is the most relevant recent efficiency-focused variant for large-scale preference optimization.
 \end{itemize}
 
-
+\end{document}
