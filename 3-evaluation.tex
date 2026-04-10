@@ -4,14 +4,14 @@
 We evaluate the algorithms based on the following metrics:
 
 \begin{itemize}
-    \item \textbf{Caption quality}: At the testing phase, we evaluate the generated difference captions using standard metrics, including BLEU-4, METEOR, ROUGE-L, and CIDEr-D. These metrics measure how well the generated descriptions align with human annotations.
+    \item \textbf{Caption quality}: At the testing phase, we evaluate the generated difference captions using standard metrics, including BLEU-4 \citep{papineni2002bleu}, METEOR \citep{banerjee2005meteor}, ROUGE-L \citep{lin2004rouge}, and CIDEr-D \citep{vedantam2015cider}. These metrics measure how well the generated descriptions align with human annotations.
 \end{itemize}
 
 \subsection{Baseline Methods}
 We consider the following recent state-of-the-art method as our primary baseline:
 
 \begin{itemize}
-    \item \textbf{ADPO}: An adversarial direct preference optimization framework that formulates image difference captioning (IDC) as a preference learning problem. It improves fine-grained difference alignment by coupling the captioning model with an adversarially trained hard-negative retriever to generate challenging counterfactual samples.
+    \item \textbf{ADPO} \citep{huang2025image}: An adversarial direct preference optimization framework that formulates image difference captioning (IDC) as a preference learning problem. It improves fine-grained difference alignment by coupling the captioning model with an adversarially trained hard-negative retriever to generate challenging counterfactual samples.
 \end{itemize}
 
 ADPO is a strong baseline in IDC and represents a competitive preference optimization framework for vision-language alignment.
@@ -20,9 +20,9 @@ ADPO is a strong baseline in IDC and represents a competitive preference optimiz
 We evaluate the algorithms on several benchmark datasets widely used in the image difference captioning (IDC) literature:
 
 \begin{itemize}
-    \item \textbf{CLEVR-Change}: A synthetic dataset for scene-level difference captioning, where the model must identify semantic changes (e.g., object color, shape, and position) while ignoring non-semantic variations such as viewpoint and illumination changes.
+    \item \textbf{CLEVR-Change} \citep{park2019robust}: A synthetic dataset for scene-level difference captioning, where the model must identify semantic changes (e.g., object color, shape, and position) while ignoring non-semantic variations such as viewpoint and illumination changes.
 
-    \item \textbf{Spot-the-Diff}: A real-world image-pair dataset that requires the model to generate natural language descriptions of semantic differences between two images.
+    \item \textbf{Spot-the-Diff} \citep{jhamtani2018learning}: A real-world image-pair dataset that requires the model to generate natural language descriptions of semantic differences between two images.
 
-    \item \textbf{Image-Editing-Request}: A dataset consisting of image pairs and corresponding editing instructions, where the model needs to describe fine-grained and diverse editing operations between images.
+    \item \textbf{Image-Editing-Request} \citep{tan2019expressing}: A dataset consisting of image pairs and corresponding editing instructions, where the model needs to describe fine-grained and diverse editing operations between images.
 \end{itemize}
