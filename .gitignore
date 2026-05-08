@@ -1,2 +1,6 @@
 *.script
 log/
+ckpts/
+wandb/
+data/
+*.pt
