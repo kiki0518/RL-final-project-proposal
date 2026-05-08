@@ -1,0 +1,872 @@
+2026-05-08 11:00:16,973:INFO: Effective parameters:
+2026-05-08 11:00:16,974:INFO:   <<< batch_size: 16
+2026-05-08 11:00:16,974:INFO:   <<< batch_size_val: 32
+2026-05-08 11:00:16,974:INFO:   <<< cache_dir: 
+2026-05-08 11:00:16,974:INFO:   <<< coef_lr: 0.001
+2026-05-08 11:00:16,974:INFO:   <<< cross_model: cross-base
+2026-05-08 11:00:16,974:INFO:   <<< cross_num_hidden_layers: 2
+2026-05-08 11:00:16,974:INFO:   <<< data_path: spot-the-diff
+2026-05-08 11:00:16,974:INFO:   <<< datatype: spot
+2026-05-08 11:00:16,974:INFO:   <<< decoder_model: decoder-base
+2026-05-08 11:00:16,974:INFO:   <<< do_eval: False
+2026-05-08 11:00:16,974:INFO:   <<< do_lower_case: False
+2026-05-08 11:00:16,974:INFO:   <<< do_pretrain: False
+2026-05-08 11:00:16,974:INFO:   <<< do_train: True
+2026-05-08 11:00:16,974:INFO:   <<< epochs: 50
+2026-05-08 11:00:16,974:INFO:   <<< features_path: spot-the-diff/data/resized_images/
+2026-05-08 11:00:16,974:INFO:   <<< fp16: False
+2026-05-08 11:00:16,974:INFO:   <<< fp16_opt_level: O1
+2026-05-08 11:00:16,974:INFO:   <<< freeze_layer_num: 0
+2026-05-08 11:00:16,974:INFO:   <<< gradient_accumulation_steps: 1
+2026-05-08 11:00:16,974:INFO:   <<< gt_dir: gt
+2026-05-08 11:00:16,974:INFO:   <<< hard_negative_rate: 0.5
+2026-05-08 11:00:16,974:INFO:   <<< init_model: ckpts/pretrained/pytorch_model.bin.spot
+2026-05-08 11:00:16,974:INFO:   <<< intra_num_hidden_layers: 9
+2026-05-08 11:00:16,974:INFO:   <<< linear_patch: 2d
+2026-05-08 11:00:16,974:INFO:   <<< local_rank: 0
+2026-05-08 11:00:16,974:INFO:   <<< lr: 0.0001
+2026-05-08 11:00:16,974:INFO:   <<< lr_decay: 0.9
+2026-05-08 11:00:16,974:INFO:   <<< margin: 0.1
+2026-05-08 11:00:16,974:INFO:   <<< max_words: 32
+2026-05-08 11:00:16,974:INFO:   <<< n_display: 50
+2026-05-08 11:00:16,974:INFO:   <<< n_gpu: 1
+2026-05-08 11:00:16,974:INFO:   <<< n_pair: 1
+2026-05-08 11:00:16,974:INFO:   <<< negative_weighting: 1
+2026-05-08 11:00:16,974:INFO:   <<< num_thread_reader: 4
+2026-05-08 11:00:16,974:INFO:   <<< output_dir: ckpts/ckpt_spot_caption
+2026-05-08 11:00:16,974:INFO:   <<< pretrained_clip_name: ViT-B/32
+2026-05-08 11:00:16,974:INFO:   <<< rank: 0
+2026-05-08 11:00:16,974:INFO:   <<< resume_model: None
+2026-05-08 11:00:16,974:INFO:   <<< sampled_use_mil: False
+2026-05-08 11:00:16,974:INFO:   <<< seed: 42
+2026-05-08 11:00:16,974:INFO:   <<< task_type: caption
+2026-05-08 11:00:16,974:INFO:   <<< text_num_hidden_layers: 12
+2026-05-08 11:00:16,974:INFO:   <<< use_mil: False
+2026-05-08 11:00:16,974:INFO:   <<< visual_num_hidden_layers: 12
+2026-05-08 11:00:16,974:INFO:   <<< warmup_proportion: 0.1
+2026-05-08 11:00:16,974:INFO:   <<< world_size: 1
+2026-05-08 11:00:16,975:INFO: device: cuda:0 n_gpu: 1
+2026-05-08 11:00:17,721:INFO: loading archive file /work/sixplus7/IDC/CLIP4IDC/modules/cross-base
+2026-05-08 11:00:17,722:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 150,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 2,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2026-05-08 11:00:17,722:INFO: Weight doesn't exsits. /work/sixplus7/IDC/CLIP4IDC/modules/cross-base/cross_pytorch_model.bin
+2026-05-08 11:00:17,722:INFO: loading archive file /work/sixplus7/IDC/CLIP4IDC/modules/decoder-base
+2026-05-08 11:00:17,722:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_target_embeddings": 77,
+  "num_attention_heads": 8,
+  "num_decoder_layers": 3,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 49408
+}
+
+2026-05-08 11:00:17,722:INFO: Weight doesn't exsits. /work/sixplus7/IDC/CLIP4IDC/modules/decoder-base/decoder_pytorch_model.bin
+2026-05-08 11:00:17,722:WARNING: Stage-One:False, Stage-Two:True
+2026-05-08 11:00:17,722:WARNING: 	 embed_dim: 512
+2026-05-08 11:00:17,723:WARNING: 	 image_resolution: 224
+2026-05-08 11:00:17,723:WARNING: 	 vision_layers: 12
+2026-05-08 11:00:17,723:WARNING: 	 vision_width: 768
+2026-05-08 11:00:17,723:WARNING: 	 vision_patch_size: 32
+2026-05-08 11:00:17,723:WARNING: 	 context_length: 77
+2026-05-08 11:00:17,723:WARNING: 	 vocab_size: 49408
+2026-05-08 11:00:17,723:WARNING: 	 transformer_width: 512
+2026-05-08 11:00:17,723:WARNING: 	 transformer_heads: 8
+2026-05-08 11:00:17,723:WARNING: 	 transformer_layers: 12
+2026-05-08 11:00:17,723:WARNING: 		 linear_patch: 2d
+2026-05-08 11:00:17,723:WARNING: 	 cut_top_layer: 0
+2026-05-08 11:00:26,912:INFO: --------------------
+2026-05-08 11:00:26,912:INFO: Weights of CLIP4IDC not initialized from pretrained model: 
+   decoder.embeddings.word_embeddings.weight
+   decoder.embeddings.position_embeddings.weight
+   decoder.embeddings.LayerNorm.weight
+   decoder.embeddings.LayerNorm.bias
+   decoder.decoder.layer.0.slf_attn.att.query.weight
+   decoder.decoder.layer.0.slf_attn.att.query.bias
+   decoder.decoder.layer.0.slf_attn.att.key.weight
+   decoder.decoder.layer.0.slf_attn.att.key.bias
+   decoder.decoder.layer.0.slf_attn.att.value.weight
+   decoder.decoder.layer.0.slf_attn.att.value.bias
+   decoder.decoder.layer.0.slf_attn.output.dense.weight
+   decoder.decoder.layer.0.slf_attn.output.dense.bias
+   decoder.decoder.layer.0.slf_attn.output.LayerNorm.weight
+   decoder.decoder.layer.0.slf_attn.output.LayerNorm.bias
+   decoder.decoder.layer.0.enc_attn.att.query.weight
+   decoder.decoder.layer.0.enc_attn.att.query.bias
+   decoder.decoder.layer.0.enc_attn.att.key.weight
+   decoder.decoder.layer.0.enc_attn.att.key.bias
+   decoder.decoder.layer.0.enc_attn.att.value.weight
+   decoder.decoder.layer.0.enc_attn.att.value.bias
+   decoder.decoder.layer.0.enc_attn.output.dense.weight
+   decoder.decoder.layer.0.enc_attn.output.dense.bias
+   decoder.decoder.layer.0.enc_attn.output.LayerNorm.weight
+   decoder.decoder.layer.0.enc_attn.output.LayerNorm.bias
+   decoder.decoder.layer.0.intermediate.dense.weight
+   decoder.decoder.layer.0.intermediate.dense.bias
+   decoder.decoder.layer.0.output.dense.weight
+   decoder.decoder.layer.0.output.dense.bias
+   decoder.decoder.layer.0.output.LayerNorm.weight
+   decoder.decoder.layer.0.output.LayerNorm.bias
+   decoder.decoder.layer.1.slf_attn.att.query.weight
+   decoder.decoder.layer.1.slf_attn.att.query.bias
+   decoder.decoder.layer.1.slf_attn.att.key.weight
+   decoder.decoder.layer.1.slf_attn.att.key.bias
+   decoder.decoder.layer.1.slf_attn.att.value.weight
+   decoder.decoder.layer.1.slf_attn.att.value.bias
+   decoder.decoder.layer.1.slf_attn.output.dense.weight
+   decoder.decoder.layer.1.slf_attn.output.dense.bias
+   decoder.decoder.layer.1.slf_attn.output.LayerNorm.weight
+   decoder.decoder.layer.1.slf_attn.output.LayerNorm.bias
+   decoder.decoder.layer.1.enc_attn.att.query.weight
+   decoder.decoder.layer.1.enc_attn.att.query.bias
+   decoder.decoder.layer.1.enc_attn.att.key.weight
+   decoder.decoder.layer.1.enc_attn.att.key.bias
+   decoder.decoder.layer.1.enc_attn.att.value.weight
+   decoder.decoder.layer.1.enc_attn.att.value.bias
+   decoder.decoder.layer.1.enc_attn.output.dense.weight
+   decoder.decoder.layer.1.enc_attn.output.dense.bias
+   decoder.decoder.layer.1.enc_attn.output.LayerNorm.weight
+   decoder.decoder.layer.1.enc_attn.output.LayerNorm.bias
+   decoder.decoder.layer.1.intermediate.dense.weight
+   decoder.decoder.layer.1.intermediate.dense.bias
+   decoder.decoder.layer.1.output.dense.weight
+   decoder.decoder.layer.1.output.dense.bias
+   decoder.decoder.layer.1.output.LayerNorm.weight
+   decoder.decoder.layer.1.output.LayerNorm.bias
+   decoder.decoder.layer.2.slf_attn.att.query.weight
+   decoder.decoder.layer.2.slf_attn.att.query.bias
+   decoder.decoder.layer.2.slf_attn.att.key.weight
+   decoder.decoder.layer.2.slf_attn.att.key.bias
+   decoder.decoder.layer.2.slf_attn.att.value.weight
+   decoder.decoder.layer.2.slf_attn.att.value.bias
+   decoder.decoder.layer.2.slf_attn.output.dense.weight
+   decoder.decoder.layer.2.slf_attn.output.dense.bias
+   decoder.decoder.layer.2.slf_attn.output.LayerNorm.weight
+   decoder.decoder.layer.2.slf_attn.output.LayerNorm.bias
+   decoder.decoder.layer.2.enc_attn.att.query.weight
+   decoder.decoder.layer.2.enc_attn.att.query.bias
+   decoder.decoder.layer.2.enc_attn.att.key.weight
+   decoder.decoder.layer.2.enc_attn.att.key.bias
+   decoder.decoder.layer.2.enc_attn.att.value.weight
+   decoder.decoder.layer.2.enc_attn.att.value.bias
+   decoder.decoder.layer.2.enc_attn.output.dense.weight
+   decoder.decoder.layer.2.enc_attn.output.dense.bias
+   decoder.decoder.layer.2.enc_attn.output.LayerNorm.weight
+   decoder.decoder.layer.2.enc_attn.output.LayerNorm.bias
+   decoder.decoder.layer.2.intermediate.dense.weight
+   decoder.decoder.layer.2.intermediate.dense.bias
+   decoder.decoder.layer.2.output.dense.weight
+   decoder.decoder.layer.2.output.dense.bias
+   decoder.decoder.layer.2.output.LayerNorm.weight
+   decoder.decoder.layer.2.output.LayerNorm.bias
+   decoder.encoder.layer.0.slf_attn.att.query.weight
+   decoder.encoder.layer.0.slf_attn.att.query.bias
+   decoder.encoder.layer.0.slf_attn.att.key.weight
+   decoder.encoder.layer.0.slf_attn.att.key.bias
+   decoder.encoder.layer.0.slf_attn.att.value.weight
+   decoder.encoder.layer.0.slf_attn.att.value.bias
+   decoder.encoder.layer.0.slf_attn.output.dense.weight
+   decoder.encoder.layer.0.slf_attn.output.dense.bias
+   decoder.encoder.layer.0.slf_attn.output.LayerNorm.weight
+   decoder.encoder.layer.0.slf_attn.output.LayerNorm.bias
+   decoder.encoder.layer.0.intermediate.dense.weight
+   decoder.encoder.layer.0.intermediate.dense.bias
+   decoder.encoder.layer.0.output.dense.weight
+   decoder.encoder.layer.0.output.dense.bias
+   decoder.encoder.layer.0.output.LayerNorm.weight
+   decoder.encoder.layer.0.output.LayerNorm.bias
+   decoder.encoder.layer.1.slf_attn.att.query.weight
+   decoder.encoder.layer.1.slf_attn.att.query.bias
+   decoder.encoder.layer.1.slf_attn.att.key.weight
+   decoder.encoder.layer.1.slf_attn.att.key.bias
+   decoder.encoder.layer.1.slf_attn.att.value.weight
+   decoder.encoder.layer.1.slf_attn.att.value.bias
+   decoder.encoder.layer.1.slf_attn.output.dense.weight
+   decoder.encoder.layer.1.slf_attn.output.dense.bias
+   decoder.encoder.layer.1.slf_attn.output.LayerNorm.weight
+   decoder.encoder.layer.1.slf_attn.output.LayerNorm.bias
+   decoder.encoder.layer.1.intermediate.dense.weight
+   decoder.encoder.layer.1.intermediate.dense.bias
+   decoder.encoder.layer.1.output.dense.weight
+   decoder.encoder.layer.1.output.dense.bias
+   decoder.encoder.layer.1.output.LayerNorm.weight
+   decoder.encoder.layer.1.output.LayerNorm.bias
+   decoder.encoder.layer.2.slf_attn.att.query.weight
+   decoder.encoder.layer.2.slf_attn.att.query.bias
+   decoder.encoder.layer.2.slf_attn.att.key.weight
+   decoder.encoder.layer.2.slf_attn.att.key.bias
+   decoder.encoder.layer.2.slf_attn.att.value.weight
+   decoder.encoder.layer.2.slf_attn.att.value.bias
+   decoder.encoder.layer.2.slf_attn.output.dense.weight
+   decoder.encoder.layer.2.slf_attn.output.dense.bias
+   decoder.encoder.layer.2.slf_attn.output.LayerNorm.weight
+   decoder.encoder.layer.2.slf_attn.output.LayerNorm.bias
+   decoder.encoder.layer.2.intermediate.dense.weight
+   decoder.encoder.layer.2.intermediate.dense.bias
+   decoder.encoder.layer.2.output.dense.weight
+   decoder.encoder.layer.2.output.dense.bias
+   decoder.encoder.layer.2.output.LayerNorm.weight
+   decoder.encoder.layer.2.output.LayerNorm.bias
+   decoder.classifier.cls.predictions.bias
+   decoder.classifier.cls.predictions.transform.dense.weight
+   decoder.classifier.cls.predictions.transform.dense.bias
+   decoder.classifier.cls.predictions.transform.LayerNorm.weight
+   decoder.classifier.cls.predictions.transform.LayerNorm.bias
+   decoder.classifier.cls.predictions.decoder.weight
+2026-05-08 11:00:26,912:INFO: Weights from pretrained model not used in CLIP4IDC: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2026-05-08 11:00:27,185:INFO: ***** Running test *****
+2026-05-08 11:00:27,185:INFO:   Num examples = 1270
+2026-05-08 11:00:27,185:INFO:   Batch size = 32
+2026-05-08 11:00:27,185:INFO:   Num steps = 40
+2026-05-08 11:00:27,185:INFO: ***** Running val *****
+2026-05-08 11:00:27,185:INFO:   Num examples = 1493
+2026-05-08 11:00:27,608:INFO: ***** Running training *****
+2026-05-08 11:00:27,608:INFO:   Num examples = 8566
+2026-05-08 11:00:27,608:INFO:   Batch size = 16
+2026-05-08 11:00:27,608:INFO:   Num steps = 26750
+2026-05-08 11:00:39,035:INFO: Epoch: 1/50, Step: 50/535, Lr: , Loss: 9.302988, Time/step: 0.228517
+2026-05-08 11:00:48,788:INFO: Epoch: 1/50, Step: 100/535, Lr: , Loss: 8.708451, Time/step: 0.195039
+2026-05-08 11:00:58,782:INFO: Epoch: 1/50, Step: 150/535, Lr: , Loss: 8.466176, Time/step: 0.199864
+2026-05-08 11:01:08,554:INFO: Epoch: 1/50, Step: 200/535, Lr: , Loss: 8.090303, Time/step: 0.195431
+2026-05-08 11:01:18,451:INFO: Epoch: 1/50, Step: 250/535, Lr: , Loss: 7.987850, Time/step: 0.197940
+2026-05-08 11:01:28,395:INFO: Epoch: 1/50, Step: 300/535, Lr: , Loss: 8.076884, Time/step: 0.198875
+2026-05-08 11:01:38,393:INFO: Epoch: 1/50, Step: 350/535, Lr: , Loss: 7.726115, Time/step: 0.199950
+2026-05-08 11:01:48,288:INFO: Epoch: 1/50, Step: 400/535, Lr: , Loss: 7.708842, Time/step: 0.197879
+2026-05-08 11:01:58,328:INFO: Epoch: 1/50, Step: 450/535, Lr: , Loss: 7.500461, Time/step: 0.200798
+2026-05-08 11:02:08,270:INFO: Epoch: 1/50, Step: 500/535, Lr: , Loss: 7.605216, Time/step: 0.198822
+2026-05-08 11:02:15,100:INFO: Epoch 1/50 Finished, Train Loss: 8.283460
+2026-05-08 11:02:15,503:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.0
+2026-05-08 11:02:15,504:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.0
+2026-05-08 11:03:46,209:INFO: Effective parameters:
+2026-05-08 11:03:46,209:INFO:   <<< batch_size: 16
+2026-05-08 11:03:46,209:INFO:   <<< batch_size_val: 32
+2026-05-08 11:03:46,209:INFO:   <<< cache_dir: 
+2026-05-08 11:03:46,209:INFO:   <<< coef_lr: 0.001
+2026-05-08 11:03:46,209:INFO:   <<< cross_model: cross-base
+2026-05-08 11:03:46,209:INFO:   <<< cross_num_hidden_layers: 2
+2026-05-08 11:03:46,209:INFO:   <<< data_path: spot-the-diff
+2026-05-08 11:03:46,209:INFO:   <<< datatype: spot
+2026-05-08 11:03:46,209:INFO:   <<< decoder_model: decoder-base
+2026-05-08 11:03:46,209:INFO:   <<< do_eval: False
+2026-05-08 11:03:46,209:INFO:   <<< do_lower_case: False
+2026-05-08 11:03:46,209:INFO:   <<< do_pretrain: False
+2026-05-08 11:03:46,209:INFO:   <<< do_train: True
+2026-05-08 11:03:46,209:INFO:   <<< epochs: 50
+2026-05-08 11:03:46,209:INFO:   <<< features_path: spot-the-diff/data/resized_images/
+2026-05-08 11:03:46,209:INFO:   <<< fp16: False
+2026-05-08 11:03:46,209:INFO:   <<< fp16_opt_level: O1
+2026-05-08 11:03:46,209:INFO:   <<< freeze_layer_num: 0
+2026-05-08 11:03:46,209:INFO:   <<< gradient_accumulation_steps: 1
+2026-05-08 11:03:46,209:INFO:   <<< gt_dir: gt
+2026-05-08 11:03:46,209:INFO:   <<< hard_negative_rate: 0.5
+2026-05-08 11:03:46,209:INFO:   <<< init_model: ckpts/pretrained/pytorch_model.bin.spot
+2026-05-08 11:03:46,209:INFO:   <<< intra_num_hidden_layers: 9
+2026-05-08 11:03:46,210:INFO:   <<< linear_patch: 2d
+2026-05-08 11:03:46,210:INFO:   <<< local_rank: 0
+2026-05-08 11:03:46,210:INFO:   <<< lr: 0.0001
+2026-05-08 11:03:46,210:INFO:   <<< lr_decay: 0.9
+2026-05-08 11:03:46,210:INFO:   <<< margin: 0.1
+2026-05-08 11:03:46,210:INFO:   <<< max_words: 32
+2026-05-08 11:03:46,210:INFO:   <<< n_display: 50
+2026-05-08 11:03:46,210:INFO:   <<< n_gpu: 1
+2026-05-08 11:03:46,210:INFO:   <<< n_pair: 1
+2026-05-08 11:03:46,210:INFO:   <<< negative_weighting: 1
+2026-05-08 11:03:46,210:INFO:   <<< num_thread_reader: 4
+2026-05-08 11:03:46,210:INFO:   <<< output_dir: ckpts/ckpt_spot_caption
+2026-05-08 11:03:46,210:INFO:   <<< pretrained_clip_name: ViT-B/32
+2026-05-08 11:03:46,210:INFO:   <<< rank: 0
+2026-05-08 11:03:46,210:INFO:   <<< resume_model: None
+2026-05-08 11:03:46,210:INFO:   <<< sampled_use_mil: False
+2026-05-08 11:03:46,210:INFO:   <<< seed: 42
+2026-05-08 11:03:46,210:INFO:   <<< task_type: caption
+2026-05-08 11:03:46,210:INFO:   <<< text_num_hidden_layers: 12
+2026-05-08 11:03:46,210:INFO:   <<< use_mil: False
+2026-05-08 11:03:46,210:INFO:   <<< visual_num_hidden_layers: 12
+2026-05-08 11:03:46,210:INFO:   <<< warmup_proportion: 0.1
+2026-05-08 11:03:46,210:INFO:   <<< world_size: 1
+2026-05-08 11:03:46,210:INFO: device: cuda:0 n_gpu: 1
+2026-05-08 11:03:46,893:INFO: loading archive file /work/sixplus7/IDC/CLIP4IDC/modules/cross-base
+2026-05-08 11:03:46,893:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 150,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 2,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2026-05-08 11:03:46,893:INFO: Weight doesn't exsits. /work/sixplus7/IDC/CLIP4IDC/modules/cross-base/cross_pytorch_model.bin
+2026-05-08 11:03:46,893:INFO: loading archive file /work/sixplus7/IDC/CLIP4IDC/modules/decoder-base
+2026-05-08 11:03:46,894:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_target_embeddings": 77,
+  "num_attention_heads": 8,
+  "num_decoder_layers": 3,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 49408
+}
+
+2026-05-08 11:03:46,894:INFO: Weight doesn't exsits. /work/sixplus7/IDC/CLIP4IDC/modules/decoder-base/decoder_pytorch_model.bin
+2026-05-08 11:03:46,894:WARNING: Stage-One:False, Stage-Two:True
+2026-05-08 11:03:46,894:WARNING: 	 embed_dim: 512
+2026-05-08 11:03:46,894:WARNING: 	 image_resolution: 224
+2026-05-08 11:03:46,894:WARNING: 	 vision_layers: 12
+2026-05-08 11:03:46,894:WARNING: 	 vision_width: 768
+2026-05-08 11:03:46,894:WARNING: 	 vision_patch_size: 32
+2026-05-08 11:03:46,894:WARNING: 	 context_length: 77
+2026-05-08 11:03:46,894:WARNING: 	 vocab_size: 49408
+2026-05-08 11:03:46,894:WARNING: 	 transformer_width: 512
+2026-05-08 11:03:46,894:WARNING: 	 transformer_heads: 8
+2026-05-08 11:03:46,894:WARNING: 	 transformer_layers: 12
+2026-05-08 11:03:46,894:WARNING: 		 linear_patch: 2d
+2026-05-08 11:03:46,894:WARNING: 	 cut_top_layer: 0
+2026-05-08 11:03:56,069:INFO: --------------------
+2026-05-08 11:03:56,070:INFO: Weights of CLIP4IDC not initialized from pretrained model: 
+   decoder.embeddings.word_embeddings.weight
+   decoder.embeddings.position_embeddings.weight
+   decoder.embeddings.LayerNorm.weight
+   decoder.embeddings.LayerNorm.bias
+   decoder.decoder.layer.0.slf_attn.att.query.weight
+   decoder.decoder.layer.0.slf_attn.att.query.bias
+   decoder.decoder.layer.0.slf_attn.att.key.weight
+   decoder.decoder.layer.0.slf_attn.att.key.bias
+   decoder.decoder.layer.0.slf_attn.att.value.weight
+   decoder.decoder.layer.0.slf_attn.att.value.bias
+   decoder.decoder.layer.0.slf_attn.output.dense.weight
+   decoder.decoder.layer.0.slf_attn.output.dense.bias
+   decoder.decoder.layer.0.slf_attn.output.LayerNorm.weight
+   decoder.decoder.layer.0.slf_attn.output.LayerNorm.bias
+   decoder.decoder.layer.0.enc_attn.att.query.weight
+   decoder.decoder.layer.0.enc_attn.att.query.bias
+   decoder.decoder.layer.0.enc_attn.att.key.weight
+   decoder.decoder.layer.0.enc_attn.att.key.bias
+   decoder.decoder.layer.0.enc_attn.att.value.weight
+   decoder.decoder.layer.0.enc_attn.att.value.bias
+   decoder.decoder.layer.0.enc_attn.output.dense.weight
+   decoder.decoder.layer.0.enc_attn.output.dense.bias
+   decoder.decoder.layer.0.enc_attn.output.LayerNorm.weight
+   decoder.decoder.layer.0.enc_attn.output.LayerNorm.bias
+   decoder.decoder.layer.0.intermediate.dense.weight
+   decoder.decoder.layer.0.intermediate.dense.bias
+   decoder.decoder.layer.0.output.dense.weight
+   decoder.decoder.layer.0.output.dense.bias
+   decoder.decoder.layer.0.output.LayerNorm.weight
+   decoder.decoder.layer.0.output.LayerNorm.bias
+   decoder.decoder.layer.1.slf_attn.att.query.weight
+   decoder.decoder.layer.1.slf_attn.att.query.bias
+   decoder.decoder.layer.1.slf_attn.att.key.weight
+   decoder.decoder.layer.1.slf_attn.att.key.bias
+   decoder.decoder.layer.1.slf_attn.att.value.weight
+   decoder.decoder.layer.1.slf_attn.att.value.bias
+   decoder.decoder.layer.1.slf_attn.output.dense.weight
+   decoder.decoder.layer.1.slf_attn.output.dense.bias
+   decoder.decoder.layer.1.slf_attn.output.LayerNorm.weight
+   decoder.decoder.layer.1.slf_attn.output.LayerNorm.bias
+   decoder.decoder.layer.1.enc_attn.att.query.weight
+   decoder.decoder.layer.1.enc_attn.att.query.bias
+   decoder.decoder.layer.1.enc_attn.att.key.weight
+   decoder.decoder.layer.1.enc_attn.att.key.bias
+   decoder.decoder.layer.1.enc_attn.att.value.weight
+   decoder.decoder.layer.1.enc_attn.att.value.bias
+   decoder.decoder.layer.1.enc_attn.output.dense.weight
+   decoder.decoder.layer.1.enc_attn.output.dense.bias
+   decoder.decoder.layer.1.enc_attn.output.LayerNorm.weight
+   decoder.decoder.layer.1.enc_attn.output.LayerNorm.bias
+   decoder.decoder.layer.1.intermediate.dense.weight
+   decoder.decoder.layer.1.intermediate.dense.bias
+   decoder.decoder.layer.1.output.dense.weight
+   decoder.decoder.layer.1.output.dense.bias
+   decoder.decoder.layer.1.output.LayerNorm.weight
+   decoder.decoder.layer.1.output.LayerNorm.bias
+   decoder.decoder.layer.2.slf_attn.att.query.weight
+   decoder.decoder.layer.2.slf_attn.att.query.bias
+   decoder.decoder.layer.2.slf_attn.att.key.weight
+   decoder.decoder.layer.2.slf_attn.att.key.bias
+   decoder.decoder.layer.2.slf_attn.att.value.weight
+   decoder.decoder.layer.2.slf_attn.att.value.bias
+   decoder.decoder.layer.2.slf_attn.output.dense.weight
+   decoder.decoder.layer.2.slf_attn.output.dense.bias
+   decoder.decoder.layer.2.slf_attn.output.LayerNorm.weight
+   decoder.decoder.layer.2.slf_attn.output.LayerNorm.bias
+   decoder.decoder.layer.2.enc_attn.att.query.weight
+   decoder.decoder.layer.2.enc_attn.att.query.bias
+   decoder.decoder.layer.2.enc_attn.att.key.weight
+   decoder.decoder.layer.2.enc_attn.att.key.bias
+   decoder.decoder.layer.2.enc_attn.att.value.weight
+   decoder.decoder.layer.2.enc_attn.att.value.bias
+   decoder.decoder.layer.2.enc_attn.output.dense.weight
+   decoder.decoder.layer.2.enc_attn.output.dense.bias
+   decoder.decoder.layer.2.enc_attn.output.LayerNorm.weight
+   decoder.decoder.layer.2.enc_attn.output.LayerNorm.bias
+   decoder.decoder.layer.2.intermediate.dense.weight
+   decoder.decoder.layer.2.intermediate.dense.bias
+   decoder.decoder.layer.2.output.dense.weight
+   decoder.decoder.layer.2.output.dense.bias
+   decoder.decoder.layer.2.output.LayerNorm.weight
+   decoder.decoder.layer.2.output.LayerNorm.bias
+   decoder.encoder.layer.0.slf_attn.att.query.weight
+   decoder.encoder.layer.0.slf_attn.att.query.bias
+   decoder.encoder.layer.0.slf_attn.att.key.weight
+   decoder.encoder.layer.0.slf_attn.att.key.bias
+   decoder.encoder.layer.0.slf_attn.att.value.weight
+   decoder.encoder.layer.0.slf_attn.att.value.bias
+   decoder.encoder.layer.0.slf_attn.output.dense.weight
+   decoder.encoder.layer.0.slf_attn.output.dense.bias
+   decoder.encoder.layer.0.slf_attn.output.LayerNorm.weight
+   decoder.encoder.layer.0.slf_attn.output.LayerNorm.bias
+   decoder.encoder.layer.0.intermediate.dense.weight
+   decoder.encoder.layer.0.intermediate.dense.bias
+   decoder.encoder.layer.0.output.dense.weight
+   decoder.encoder.layer.0.output.dense.bias
+   decoder.encoder.layer.0.output.LayerNorm.weight
+   decoder.encoder.layer.0.output.LayerNorm.bias
+   decoder.encoder.layer.1.slf_attn.att.query.weight
+   decoder.encoder.layer.1.slf_attn.att.query.bias
+   decoder.encoder.layer.1.slf_attn.att.key.weight
+   decoder.encoder.layer.1.slf_attn.att.key.bias
+   decoder.encoder.layer.1.slf_attn.att.value.weight
+   decoder.encoder.layer.1.slf_attn.att.value.bias
+   decoder.encoder.layer.1.slf_attn.output.dense.weight
+   decoder.encoder.layer.1.slf_attn.output.dense.bias
+   decoder.encoder.layer.1.slf_attn.output.LayerNorm.weight
+   decoder.encoder.layer.1.slf_attn.output.LayerNorm.bias
+   decoder.encoder.layer.1.intermediate.dense.weight
+   decoder.encoder.layer.1.intermediate.dense.bias
+   decoder.encoder.layer.1.output.dense.weight
+   decoder.encoder.layer.1.output.dense.bias
+   decoder.encoder.layer.1.output.LayerNorm.weight
+   decoder.encoder.layer.1.output.LayerNorm.bias
+   decoder.encoder.layer.2.slf_attn.att.query.weight
+   decoder.encoder.layer.2.slf_attn.att.query.bias
+   decoder.encoder.layer.2.slf_attn.att.key.weight
+   decoder.encoder.layer.2.slf_attn.att.key.bias
+   decoder.encoder.layer.2.slf_attn.att.value.weight
+   decoder.encoder.layer.2.slf_attn.att.value.bias
+   decoder.encoder.layer.2.slf_attn.output.dense.weight
+   decoder.encoder.layer.2.slf_attn.output.dense.bias
+   decoder.encoder.layer.2.slf_attn.output.LayerNorm.weight
+   decoder.encoder.layer.2.slf_attn.output.LayerNorm.bias
+   decoder.encoder.layer.2.intermediate.dense.weight
+   decoder.encoder.layer.2.intermediate.dense.bias
+   decoder.encoder.layer.2.output.dense.weight
+   decoder.encoder.layer.2.output.dense.bias
+   decoder.encoder.layer.2.output.LayerNorm.weight
+   decoder.encoder.layer.2.output.LayerNorm.bias
+   decoder.classifier.cls.predictions.bias
+   decoder.classifier.cls.predictions.transform.dense.weight
+   decoder.classifier.cls.predictions.transform.dense.bias
+   decoder.classifier.cls.predictions.transform.LayerNorm.weight
+   decoder.classifier.cls.predictions.transform.LayerNorm.bias
+   decoder.classifier.cls.predictions.decoder.weight
+2026-05-08 11:03:56,070:INFO: Weights from pretrained model not used in CLIP4IDC: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2026-05-08 11:03:56,354:INFO: ***** Running test *****
+2026-05-08 11:03:56,354:INFO:   Num examples = 1270
+2026-05-08 11:03:56,354:INFO:   Batch size = 32
+2026-05-08 11:03:56,354:INFO:   Num steps = 40
+2026-05-08 11:03:56,354:INFO: ***** Running val *****
+2026-05-08 11:03:56,354:INFO:   Num examples = 1493
+2026-05-08 11:03:56,742:INFO: ***** Running training *****
+2026-05-08 11:03:56,743:INFO:   Num examples = 8566
+2026-05-08 11:03:56,743:INFO:   Batch size = 16
+2026-05-08 11:03:56,743:INFO:   Num steps = 26750
+2026-05-08 11:04:09,613:INFO: Epoch: 1/50, Step: 50/535, Lr: , Loss: 9.283874, Time/step: 0.257387
+2026-05-08 11:04:21,965:INFO: Epoch: 1/50, Step: 100/535, Lr: , Loss: 8.631994, Time/step: 0.247039
+2026-05-08 11:04:34,245:INFO: Epoch: 1/50, Step: 150/535, Lr: , Loss: 8.363401, Time/step: 0.245589
+2026-05-08 11:04:46,375:INFO: Epoch: 1/50, Step: 200/535, Lr: , Loss: 8.166654, Time/step: 0.242584
+2026-05-08 11:04:58,773:INFO: Epoch: 1/50, Step: 250/535, Lr: , Loss: 8.052325, Time/step: 0.247953
+2026-05-08 11:05:11,340:INFO: Epoch: 1/50, Step: 300/535, Lr: , Loss: 8.004744, Time/step: 0.251318
+2026-05-08 11:05:23,854:INFO: Epoch: 1/50, Step: 350/535, Lr: , Loss: 7.716997, Time/step: 0.250278
+2026-05-08 11:05:36,591:INFO: Epoch: 1/50, Step: 400/535, Lr: , Loss: 7.729517, Time/step: 0.254721
+2026-05-08 11:05:48,544:INFO: Epoch: 1/50, Step: 450/535, Lr: , Loss: 7.519858, Time/step: 0.239053
+2026-05-08 11:06:01,013:INFO: Epoch: 1/50, Step: 500/535, Lr: , Loss: 7.687906, Time/step: 0.249370
+2026-05-08 11:06:09,542:INFO: Epoch 1/50 Finished, Train Loss: 8.293251
+2026-05-08 11:06:10,398:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.0
+2026-05-08 11:06:10,398:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.0
+2026-05-08 11:06:35,466:INFO: >>>  BLEU_1: 0.1042, BLEU_2: 0.0678, BLEU_3: 0.0489, BLEU_4: 0.0334
+2026-05-08 11:06:35,466:INFO: >>>  METEOR: 0.0669, ROUGE_L: 0.1779, CIDEr: 0.1646
+2026-05-08 11:06:35,466:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.0, the CIDEr is: 0.1646
+2026-05-08 11:06:39,633:INFO: Epoch: 2/50, Step: 15/535, Lr: , Loss: 7.575476, Time/step: 0.082955
+2026-05-08 11:06:50,979:INFO: Epoch: 2/50, Step: 65/535, Lr: , Loss: 7.597322, Time/step: 0.226908
+2026-05-08 11:07:02,128:INFO: Epoch: 2/50, Step: 115/535, Lr: , Loss: 7.543558, Time/step: 0.222962
+2026-05-08 11:07:13,884:INFO: Epoch: 2/50, Step: 165/535, Lr: , Loss: 7.617846, Time/step: 0.235105
+2026-05-08 11:07:25,715:INFO: Epoch: 2/50, Step: 215/535, Lr: , Loss: 7.565347, Time/step: 0.236609
+2026-05-08 11:07:37,214:INFO: Epoch: 2/50, Step: 265/535, Lr: , Loss: 7.510507, Time/step: 0.229979
+2026-05-08 11:07:48,819:INFO: Epoch: 2/50, Step: 315/535, Lr: , Loss: 7.052767, Time/step: 0.232079
+2026-05-08 11:08:01,158:INFO: Epoch: 2/50, Step: 365/535, Lr: , Loss: 7.562524, Time/step: 0.246772
+2026-05-08 11:08:13,230:INFO: Epoch: 2/50, Step: 415/535, Lr: , Loss: 7.245433, Time/step: 0.241428
+2026-05-08 11:08:25,740:INFO: Epoch: 2/50, Step: 465/535, Lr: , Loss: 7.327889, Time/step: 0.250192
+2026-05-08 11:08:37,828:INFO: Epoch: 2/50, Step: 515/535, Lr: , Loss: 7.387261, Time/step: 0.241734
+2026-05-08 11:08:42,404:INFO: Epoch 2/50 Finished, Train Loss: 7.392277
+2026-05-08 11:08:42,843:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.1
+2026-05-08 11:08:42,843:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.1
+2026-05-08 11:09:08,982:INFO: >>>  BLEU_1: 0.3131, BLEU_2: 0.1984, BLEU_3: 0.1018, BLEU_4: 0.0526
+2026-05-08 11:09:08,982:INFO: >>>  METEOR: 0.1044, ROUGE_L: 0.2860, CIDEr: 0.2400
+2026-05-08 11:09:08,983:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.1, the CIDEr is: 0.2400
+2026-05-08 11:09:16,956:INFO: Epoch: 3/50, Step: 30/535, Lr: , Loss: 7.412048, Time/step: 0.158996
+2026-05-08 11:09:29,723:INFO: Epoch: 3/50, Step: 80/535, Lr: , Loss: 7.101687, Time/step: 0.255334
+2026-05-08 11:09:42,238:INFO: Epoch: 3/50, Step: 130/535, Lr: , Loss: 7.070487, Time/step: 0.250287
+2026-05-08 11:09:54,997:INFO: Epoch: 3/50, Step: 180/535, Lr: , Loss: 7.008406, Time/step: 0.255170
+2026-05-08 11:10:07,218:INFO: Epoch: 3/50, Step: 230/535, Lr: , Loss: 7.214394, Time/step: 0.244411
+2026-05-08 11:10:19,764:INFO: Epoch: 3/50, Step: 280/535, Lr: , Loss: 7.095400, Time/step: 0.250904
+2026-05-08 11:10:32,420:INFO: Epoch: 3/50, Step: 330/535, Lr: , Loss: 6.708799, Time/step: 0.253104
+2026-05-08 11:10:45,037:INFO: Epoch: 3/50, Step: 380/535, Lr: , Loss: 7.058588, Time/step: 0.252336
+2026-05-08 11:10:57,122:INFO: Epoch: 3/50, Step: 430/535, Lr: , Loss: 6.811376, Time/step: 0.241686
+2026-05-08 11:11:08,838:INFO: Epoch: 3/50, Step: 480/535, Lr: , Loss: 7.017655, Time/step: 0.234313
+2026-05-08 11:11:20,967:INFO: Epoch: 3/50, Step: 530/535, Lr: , Loss: 7.159510, Time/step: 0.242571
+2026-05-08 11:11:21,928:INFO: Epoch 3/50 Finished, Train Loss: 7.054503
+2026-05-08 11:11:22,336:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.2
+2026-05-08 11:11:22,337:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.2
+2026-05-08 11:11:48,085:INFO: >>>  BLEU_1: 0.3376, BLEU_2: 0.2204, BLEU_3: 0.1372, BLEU_4: 0.0860
+2026-05-08 11:11:48,086:INFO: >>>  METEOR: 0.1077, ROUGE_L: 0.3078, CIDEr: 0.3329
+2026-05-08 11:11:48,086:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.2, the CIDEr is: 0.3329
+2026-05-08 11:11:58,975:INFO: Epoch: 4/50, Step: 45/535, Lr: , Loss: 7.029955, Time/step: 0.217306
+2026-05-08 11:12:11,319:INFO: Epoch: 4/50, Step: 95/535, Lr: , Loss: 6.831241, Time/step: 0.246865
+2026-05-08 11:12:23,392:INFO: Epoch: 4/50, Step: 145/535, Lr: , Loss: 6.686963, Time/step: 0.241454
+2026-05-08 11:12:35,078:INFO: Epoch: 4/50, Step: 195/535, Lr: , Loss: 7.012371, Time/step: 0.233702
+2026-05-08 11:12:47,591:INFO: Epoch: 4/50, Step: 245/535, Lr: , Loss: 6.800554, Time/step: 0.250269
+2026-05-08 11:12:59,852:INFO: Epoch: 4/50, Step: 295/535, Lr: , Loss: 6.756038, Time/step: 0.245196
+2026-05-08 11:13:11,312:INFO: Epoch: 4/50, Step: 345/535, Lr: , Loss: 6.855962, Time/step: 0.229192
+2026-05-08 11:13:23,579:INFO: Epoch: 4/50, Step: 395/535, Lr: , Loss: 7.204587, Time/step: 0.245344
+2026-05-08 11:13:35,434:INFO: Epoch: 4/50, Step: 445/535, Lr: , Loss: 6.461859, Time/step: 0.237094
+2026-05-08 11:13:47,297:INFO: Epoch: 4/50, Step: 495/535, Lr: , Loss: 6.237451, Time/step: 0.237231
+2026-05-08 11:13:56,747:INFO: Epoch 4/50 Finished, Train Loss: 6.733232
+2026-05-08 11:13:57,195:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.3
+2026-05-08 11:13:57,195:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.3
+2026-05-08 11:14:23,077:INFO: >>>  BLEU_1: 0.3538, BLEU_2: 0.2265, BLEU_3: 0.1422, BLEU_4: 0.0883
+2026-05-08 11:14:23,077:INFO: >>>  METEOR: 0.1142, ROUGE_L: 0.3146, CIDEr: 0.3601
+2026-05-08 11:14:23,077:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.3, the CIDEr is: 0.3601
+2026-05-08 11:14:26,217:INFO: Epoch: 5/50, Step: 10/535, Lr: , Loss: 6.426609, Time/step: 0.062344
+2026-05-08 11:14:38,042:INFO: Epoch: 5/50, Step: 60/535, Lr: , Loss: 6.528872, Time/step: 0.236485
+2026-05-08 11:14:49,722:INFO: Epoch: 5/50, Step: 110/535, Lr: , Loss: 6.703360, Time/step: 0.233580
+2026-05-08 11:15:01,836:INFO: Epoch: 5/50, Step: 160/535, Lr: , Loss: 6.387613, Time/step: 0.242279
+2026-05-08 11:15:14,068:INFO: Epoch: 5/50, Step: 210/535, Lr: , Loss: 6.665053, Time/step: 0.244621
+2026-05-08 11:15:26,213:INFO: Epoch: 5/50, Step: 260/535, Lr: , Loss: 6.542052, Time/step: 0.242892
+2026-05-08 11:15:38,374:INFO: Epoch: 5/50, Step: 310/535, Lr: , Loss: 6.335188, Time/step: 0.243219
+2026-05-08 11:15:50,600:INFO: Epoch: 5/50, Step: 360/535, Lr: , Loss: 5.960497, Time/step: 0.244495
+2026-05-08 11:16:02,977:INFO: Epoch: 5/50, Step: 410/535, Lr: , Loss: 6.323231, Time/step: 0.247540
+2026-05-08 11:16:15,434:INFO: Epoch: 5/50, Step: 460/535, Lr: , Loss: 6.778073, Time/step: 0.249123
+2026-05-08 11:16:27,658:INFO: Epoch: 5/50, Step: 510/535, Lr: , Loss: 6.277308, Time/step: 0.244465
+2026-05-08 11:16:33,243:INFO: Epoch 5/50 Finished, Train Loss: 6.379173
+2026-05-08 11:16:33,651:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.4
+2026-05-08 11:16:33,651:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.4
+2026-05-08 11:16:59,651:INFO: >>>  BLEU_1: 0.3930, BLEU_2: 0.2635, BLEU_3: 0.1692, BLEU_4: 0.1082
+2026-05-08 11:16:59,651:INFO: >>>  METEOR: 0.1270, ROUGE_L: 0.3316, CIDEr: 0.4250
+2026-05-08 11:16:59,651:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.4, the CIDEr is: 0.4250
+2026-05-08 11:17:06,585:INFO: Epoch: 6/50, Step: 25/535, Lr: , Loss: 5.863197, Time/step: 0.138212
+2026-05-08 11:17:19,214:INFO: Epoch: 6/50, Step: 75/535, Lr: , Loss: 6.060722, Time/step: 0.252576
+2026-05-08 11:17:31,169:INFO: Epoch: 6/50, Step: 125/535, Lr: , Loss: 5.886366, Time/step: 0.239087
+2026-05-08 11:17:43,353:INFO: Epoch: 6/50, Step: 175/535, Lr: , Loss: 6.550128, Time/step: 0.243663
+2026-05-08 11:17:55,557:INFO: Epoch: 6/50, Step: 225/535, Lr: , Loss: 6.139583, Time/step: 0.244058
+2026-05-08 11:18:08,165:INFO: Epoch: 6/50, Step: 275/535, Lr: , Loss: 5.992223, Time/step: 0.252151
+2026-05-08 11:18:20,078:INFO: Epoch: 6/50, Step: 325/535, Lr: , Loss: 6.300035, Time/step: 0.238250
+2026-05-08 11:18:32,458:INFO: Epoch: 6/50, Step: 375/535, Lr: , Loss: 5.797665, Time/step: 0.247589
+2026-05-08 11:18:44,452:INFO: Epoch: 6/50, Step: 425/535, Lr: , Loss: 5.794323, Time/step: 0.239883
+2026-05-08 11:18:56,835:INFO: Epoch: 6/50, Step: 475/535, Lr: , Loss: 5.880045, Time/step: 0.247646
+2026-05-08 11:19:09,524:INFO: Epoch: 6/50, Step: 525/535, Lr: , Loss: 5.657263, Time/step: 0.253755
+2026-05-08 11:19:11,435:INFO: Epoch 6/50 Finished, Train Loss: 6.007079
+2026-05-08 11:19:11,846:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.5
+2026-05-08 11:19:11,846:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.5
+2026-05-08 11:19:37,886:INFO: >>>  BLEU_1: 0.3956, BLEU_2: 0.2647, BLEU_3: 0.1682, BLEU_4: 0.1050
+2026-05-08 11:19:37,886:INFO: >>>  METEOR: 0.1301, ROUGE_L: 0.3412, CIDEr: 0.4284
+2026-05-08 11:19:37,887:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.5, the CIDEr is: 0.4284
+2026-05-08 11:19:48,454:INFO: Epoch: 7/50, Step: 40/535, Lr: , Loss: 5.989342, Time/step: 0.210912
+2026-05-08 11:20:00,933:INFO: Epoch: 7/50, Step: 90/535, Lr: , Loss: 6.025158, Time/step: 0.249569
+2026-05-08 11:20:13,248:INFO: Epoch: 7/50, Step: 140/535, Lr: , Loss: 5.375116, Time/step: 0.246292
+2026-05-08 11:20:26,077:INFO: Epoch: 7/50, Step: 190/535, Lr: , Loss: 6.060803, Time/step: 0.256567
+2026-05-08 11:20:38,111:INFO: Epoch: 7/50, Step: 240/535, Lr: , Loss: 5.820823, Time/step: 0.240669
+2026-05-08 11:20:50,266:INFO: Epoch: 7/50, Step: 290/535, Lr: , Loss: 5.308490, Time/step: 0.243095
+2026-05-08 11:21:02,873:INFO: Epoch: 7/50, Step: 340/535, Lr: , Loss: 5.539002, Time/step: 0.252128
+2026-05-08 11:21:14,750:INFO: Epoch: 7/50, Step: 390/535, Lr: , Loss: 6.400900, Time/step: 0.237528
+2026-05-08 11:21:27,325:INFO: Epoch: 7/50, Step: 440/535, Lr: , Loss: 5.212462, Time/step: 0.251496
+2026-05-08 11:21:40,068:INFO: Epoch: 7/50, Step: 490/535, Lr: , Loss: 5.697977, Time/step: 0.254857
+2026-05-08 11:21:50,911:INFO: Epoch 7/50 Finished, Train Loss: 5.657201
+2026-05-08 11:21:51,356:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.6
+2026-05-08 11:21:51,357:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.6
+2026-05-08 11:22:17,430:INFO: >>>  BLEU_1: 0.3658, BLEU_2: 0.2298, BLEU_3: 0.1468, BLEU_4: 0.0931
+2026-05-08 11:22:17,430:INFO: >>>  METEOR: 0.1180, ROUGE_L: 0.3110, CIDEr: 0.3816
+2026-05-08 11:22:17,431:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.5, the CIDEr is: 0.4284
+2026-05-08 11:22:19,330:INFO: Epoch: 8/50, Step: 5/535, Lr: , Loss: 5.234765, Time/step: 0.037552
+2026-05-08 11:22:31,490:INFO: Epoch: 8/50, Step: 55/535, Lr: , Loss: 5.677833, Time/step: 0.243199
+2026-05-08 11:22:43,400:INFO: Epoch: 8/50, Step: 105/535, Lr: , Loss: 5.760443, Time/step: 0.238186
+2026-05-08 11:22:55,404:INFO: Epoch: 8/50, Step: 155/535, Lr: , Loss: 5.579887, Time/step: 0.240081
+2026-05-08 11:23:06,903:INFO: Epoch: 8/50, Step: 205/535, Lr: , Loss: 5.666984, Time/step: 0.229961
+2026-05-08 11:23:19,547:INFO: Epoch: 8/50, Step: 255/535, Lr: , Loss: 5.384287, Time/step: 0.252873
+2026-05-08 11:23:31,466:INFO: Epoch: 8/50, Step: 305/535, Lr: , Loss: 5.375043, Time/step: 0.238373
+2026-05-08 11:23:44,279:INFO: Epoch: 8/50, Step: 355/535, Lr: , Loss: 5.246953, Time/step: 0.256253
+2026-05-08 11:23:56,554:INFO: Epoch: 8/50, Step: 405/535, Lr: , Loss: 5.421615, Time/step: 0.245495
+2026-05-08 11:24:08,315:INFO: Epoch: 8/50, Step: 455/535, Lr: , Loss: 5.096905, Time/step: 0.235210
+2026-05-08 11:24:20,142:INFO: Epoch: 8/50, Step: 505/535, Lr: , Loss: 5.375031, Time/step: 0.236513
+2026-05-08 11:24:27,223:INFO: Epoch 8/50 Finished, Train Loss: 5.328777
+2026-05-08 11:24:27,619:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.7
+2026-05-08 11:24:27,620:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.7
+2026-05-08 11:24:53,359:INFO: >>>  BLEU_1: 0.3750, BLEU_2: 0.2332, BLEU_3: 0.1486, BLEU_4: 0.0967
+2026-05-08 11:24:53,359:INFO: >>>  METEOR: 0.1264, ROUGE_L: 0.3254, CIDEr: 0.4346
+2026-05-08 11:24:53,360:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.7, the CIDEr is: 0.4346
+2026-05-08 11:24:58,868:INFO: Epoch: 9/50, Step: 20/535, Lr: , Loss: 5.067692, Time/step: 0.109731
+2026-05-08 11:25:10,994:INFO: Epoch: 9/50, Step: 70/535, Lr: , Loss: 4.947746, Time/step: 0.242518
+2026-05-08 11:25:23,652:INFO: Epoch: 9/50, Step: 120/535, Lr: , Loss: 4.819720, Time/step: 0.253139
+2026-05-08 11:25:35,372:INFO: Epoch: 9/50, Step: 170/535, Lr: , Loss: 5.192340, Time/step: 0.234397
+2026-05-08 11:25:47,637:INFO: Epoch: 9/50, Step: 220/535, Lr: , Loss: 5.105571, Time/step: 0.245291
+2026-05-08 11:25:59,979:INFO: Epoch: 9/50, Step: 270/535, Lr: , Loss: 4.987381, Time/step: 0.246832
+2026-05-08 11:26:12,307:INFO: Epoch: 9/50, Step: 320/535, Lr: , Loss: 5.114064, Time/step: 0.246544
+2026-05-08 11:26:24,365:INFO: Epoch: 9/50, Step: 370/535, Lr: , Loss: 5.542122, Time/step: 0.241142
+2026-05-08 11:26:36,037:INFO: Epoch: 9/50, Step: 420/535, Lr: , Loss: 5.172999, Time/step: 0.233436
+2026-05-08 11:26:48,541:INFO: Epoch: 9/50, Step: 470/535, Lr: , Loss: 5.457011, Time/step: 0.250072
+2026-05-08 11:27:00,385:INFO: Epoch: 9/50, Step: 520/535, Lr: , Loss: 5.353262, Time/step: 0.236863
+2026-05-08 11:27:03,442:INFO: Epoch 9/50 Finished, Train Loss: 5.026984
+2026-05-08 11:27:03,862:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.8
+2026-05-08 11:27:03,862:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.8
+2026-05-08 11:27:30,316:INFO: >>>  BLEU_1: 0.3593, BLEU_2: 0.2174, BLEU_3: 0.1367, BLEU_4: 0.0852
+2026-05-08 11:27:30,317:INFO: >>>  METEOR: 0.1157, ROUGE_L: 0.3071, CIDEr: 0.3459
+2026-05-08 11:27:30,317:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.7, the CIDEr is: 0.4346
+2026-05-08 11:27:39,605:INFO: Epoch: 10/50, Step: 35/535, Lr: , Loss: 4.758421, Time/step: 0.185333
+2026-05-08 11:27:52,191:INFO: Epoch: 10/50, Step: 85/535, Lr: , Loss: 4.945370, Time/step: 0.251706
+2026-05-08 11:28:05,002:INFO: Epoch: 10/50, Step: 135/535, Lr: , Loss: 4.785890, Time/step: 0.256194
+2026-05-08 11:28:17,377:INFO: Epoch: 10/50, Step: 185/535, Lr: , Loss: 4.719273, Time/step: 0.247503
+2026-05-08 11:28:29,998:INFO: Epoch: 10/50, Step: 235/535, Lr: , Loss: 5.117704, Time/step: 0.252395
+2026-05-08 11:28:42,124:INFO: Epoch: 10/50, Step: 285/535, Lr: , Loss: 5.003373, Time/step: 0.242512
+2026-05-08 11:28:54,390:INFO: Epoch: 10/50, Step: 335/535, Lr: , Loss: 4.803011, Time/step: 0.245317
+2026-05-08 11:29:06,889:INFO: Epoch: 10/50, Step: 385/535, Lr: , Loss: 4.968704, Time/step: 0.249952
+2026-05-08 11:29:18,502:INFO: Epoch: 10/50, Step: 435/535, Lr: , Loss: 4.663145, Time/step: 0.232251
+2026-05-08 11:29:30,856:INFO: Epoch: 10/50, Step: 485/535, Lr: , Loss: 4.418300, Time/step: 0.247082
+2026-05-08 11:29:42,795:INFO: Epoch: 10/50, Step: 535/535, Lr: , Loss: 4.816623, Time/step: 0.238755
+2026-05-08 11:29:42,844:INFO: Epoch 10/50 Finished, Train Loss: 4.735473
+2026-05-08 11:29:43,280:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.9
+2026-05-08 11:29:43,281:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.9
+2026-05-08 11:30:09,154:INFO: >>>  BLEU_1: 0.3681, BLEU_2: 0.2261, BLEU_3: 0.1439, BLEU_4: 0.0916
+2026-05-08 11:30:09,155:INFO: >>>  METEOR: 0.1206, ROUGE_L: 0.3085, CIDEr: 0.3801
+2026-05-08 11:30:09,155:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.7, the CIDEr is: 0.4346
+2026-05-08 11:30:22,003:INFO: Epoch: 11/50, Step: 50/535, Lr: , Loss: 4.798906, Time/step: 0.256518
+2026-05-08 11:30:34,429:INFO: Epoch: 11/50, Step: 100/535, Lr: , Loss: 4.593143, Time/step: 0.248509
+2026-05-08 11:30:47,356:INFO: Epoch: 11/50, Step: 150/535, Lr: , Loss: 4.826946, Time/step: 0.258522
+2026-05-08 11:30:59,678:INFO: Epoch: 11/50, Step: 200/535, Lr: , Loss: 3.878207, Time/step: 0.246429
+2026-05-08 11:31:12,293:INFO: Epoch: 11/50, Step: 250/535, Lr: , Loss: 4.228232, Time/step: 0.252289
+2026-05-08 11:31:24,861:INFO: Epoch: 11/50, Step: 300/535, Lr: , Loss: 4.433781, Time/step: 0.251350
+2026-05-08 11:31:37,846:INFO: Epoch: 11/50, Step: 350/535, Lr: , Loss: 4.169637, Time/step: 0.259690
+2026-05-08 11:31:50,128:INFO: Epoch: 11/50, Step: 400/535, Lr: , Loss: 4.905771, Time/step: 0.245622
+2026-05-08 11:32:02,205:INFO: Epoch: 11/50, Step: 450/535, Lr: , Loss: 4.228848, Time/step: 0.241531
+2026-05-08 11:32:14,188:INFO: Epoch: 11/50, Step: 500/535, Lr: , Loss: 4.171976, Time/step: 0.239653
+2026-05-08 11:32:22,170:INFO: Epoch 11/50 Finished, Train Loss: 4.463999
+2026-05-08 11:32:22,608:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.10
+2026-05-08 11:32:22,609:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.10
+2026-05-08 11:32:48,593:INFO: >>>  BLEU_1: 0.3982, BLEU_2: 0.2666, BLEU_3: 0.1721, BLEU_4: 0.1099
+2026-05-08 11:32:48,593:INFO: >>>  METEOR: 0.1301, ROUGE_L: 0.3385, CIDEr: 0.4415
+2026-05-08 11:32:48,594:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:32:52,930:INFO: Epoch: 12/50, Step: 15/535, Lr: , Loss: 4.231242, Time/step: 0.086259
+2026-05-08 11:33:05,151:INFO: Epoch: 12/50, Step: 65/535, Lr: , Loss: 4.525238, Time/step: 0.244396
+2026-05-08 11:33:17,278:INFO: Epoch: 12/50, Step: 115/535, Lr: , Loss: 4.261707, Time/step: 0.242540
+2026-05-08 11:33:29,761:INFO: Epoch: 12/50, Step: 165/535, Lr: , Loss: 4.314230, Time/step: 0.249655
+2026-05-08 11:33:41,897:INFO: Epoch: 12/50, Step: 215/535, Lr: , Loss: 4.120949, Time/step: 0.242712
+2026-05-08 11:33:54,087:INFO: Epoch: 12/50, Step: 265/535, Lr: , Loss: 4.431427, Time/step: 0.243785
+2026-05-08 11:34:06,969:INFO: Epoch: 12/50, Step: 315/535, Lr: , Loss: 4.225640, Time/step: 0.257625
+2026-05-08 11:34:19,268:INFO: Epoch: 12/50, Step: 365/535, Lr: , Loss: 3.804010, Time/step: 0.245974
+2026-05-08 11:34:31,685:INFO: Epoch: 12/50, Step: 415/535, Lr: , Loss: 4.266949, Time/step: 0.248331
+2026-05-08 11:34:43,751:INFO: Epoch: 12/50, Step: 465/535, Lr: , Loss: 4.656692, Time/step: 0.241302
+2026-05-08 11:34:56,582:INFO: Epoch: 12/50, Step: 515/535, Lr: , Loss: 3.518348, Time/step: 0.256604
+2026-05-08 11:35:00,922:INFO: Epoch 12/50 Finished, Train Loss: 4.202460
+2026-05-08 11:35:01,344:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.11
+2026-05-08 11:35:01,344:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.11
+2026-05-08 11:35:27,103:INFO: >>>  BLEU_1: 0.3743, BLEU_2: 0.2314, BLEU_3: 0.1477, BLEU_4: 0.0934
+2026-05-08 11:35:27,103:INFO: >>>  METEOR: 0.1203, ROUGE_L: 0.3117, CIDEr: 0.3978
+2026-05-08 11:35:27,104:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:35:35,100:INFO: Epoch: 13/50, Step: 30/535, Lr: , Loss: 4.057278, Time/step: 0.159445
+2026-05-08 11:35:47,760:INFO: Epoch: 13/50, Step: 80/535, Lr: , Loss: 4.081112, Time/step: 0.253190
+2026-05-08 11:35:59,810:INFO: Epoch: 13/50, Step: 130/535, Lr: , Loss: 4.114247, Time/step: 0.240994
+2026-05-08 11:36:12,498:INFO: Epoch: 13/50, Step: 180/535, Lr: , Loss: 3.955129, Time/step: 0.253748
+2026-05-08 11:36:25,013:INFO: Epoch: 13/50, Step: 230/535, Lr: , Loss: 3.737903, Time/step: 0.250296
+2026-05-08 11:36:37,705:INFO: Epoch: 13/50, Step: 280/535, Lr: , Loss: 4.052671, Time/step: 0.253822
+2026-05-08 11:36:50,048:INFO: Epoch: 13/50, Step: 330/535, Lr: , Loss: 4.110434, Time/step: 0.246850
+2026-05-08 11:37:02,666:INFO: Epoch: 13/50, Step: 380/535, Lr: , Loss: 4.143970, Time/step: 0.252342
+2026-05-08 11:37:15,399:INFO: Epoch: 13/50, Step: 430/535, Lr: , Loss: 4.179989, Time/step: 0.254657
+2026-05-08 11:37:27,672:INFO: Epoch: 13/50, Step: 480/535, Lr: , Loss: 3.969432, Time/step: 0.245446
+2026-05-08 11:37:39,942:INFO: Epoch: 13/50, Step: 530/535, Lr: , Loss: 3.734624, Time/step: 0.245372
+2026-05-08 11:37:40,901:INFO: Epoch 13/50 Finished, Train Loss: 3.967892
+2026-05-08 11:37:41,337:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.12
+2026-05-08 11:37:41,337:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.12
+2026-05-08 11:38:07,247:INFO: >>>  BLEU_1: 0.3692, BLEU_2: 0.2251, BLEU_3: 0.1417, BLEU_4: 0.0883
+2026-05-08 11:38:07,247:INFO: >>>  METEOR: 0.1200, ROUGE_L: 0.3125, CIDEr: 0.3890
+2026-05-08 11:38:07,248:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:38:18,882:INFO: Epoch: 14/50, Step: 45/535, Lr: , Loss: 3.695816, Time/step: 0.232246
+2026-05-08 11:38:31,443:INFO: Epoch: 14/50, Step: 95/535, Lr: , Loss: 3.773525, Time/step: 0.251203
+2026-05-08 11:38:43,557:INFO: Epoch: 14/50, Step: 145/535, Lr: , Loss: 3.931862, Time/step: 0.242282
+2026-05-08 11:38:56,210:INFO: Epoch: 14/50, Step: 195/535, Lr: , Loss: 3.666355, Time/step: 0.253034
+2026-05-08 11:39:08,673:INFO: Epoch: 14/50, Step: 245/535, Lr: , Loss: 3.804202, Time/step: 0.249264
+2026-05-08 11:39:21,432:INFO: Epoch: 14/50, Step: 295/535, Lr: , Loss: 4.025425, Time/step: 0.255171
+2026-05-08 11:39:33,976:INFO: Epoch: 14/50, Step: 345/535, Lr: , Loss: 3.721675, Time/step: 0.250864
+2026-05-08 11:39:46,706:INFO: Epoch: 14/50, Step: 395/535, Lr: , Loss: 3.595845, Time/step: 0.254597
+2026-05-08 11:39:59,552:INFO: Epoch: 14/50, Step: 445/535, Lr: , Loss: 3.897914, Time/step: 0.256890
+2026-05-08 11:40:11,972:INFO: Epoch: 14/50, Step: 495/535, Lr: , Loss: 3.641508, Time/step: 0.248395
+2026-05-08 11:40:21,658:INFO: Epoch 14/50 Finished, Train Loss: 3.748069
+2026-05-08 11:40:22,097:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.13
+2026-05-08 11:40:22,098:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.13
+2026-05-08 11:40:48,209:INFO: >>>  BLEU_1: 0.3399, BLEU_2: 0.2109, BLEU_3: 0.1299, BLEU_4: 0.0803
+2026-05-08 11:40:48,209:INFO: >>>  METEOR: 0.1164, ROUGE_L: 0.2864, CIDEr: 0.2957
+2026-05-08 11:40:48,209:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:40:51,355:INFO: Epoch: 15/50, Step: 10/535, Lr: , Loss: 3.580549, Time/step: 0.062489
+2026-05-08 11:41:03,462:INFO: Epoch: 15/50, Step: 60/535, Lr: , Loss: 2.994754, Time/step: 0.242126
+2026-05-08 11:41:16,414:INFO: Epoch: 15/50, Step: 110/535, Lr: , Loss: 3.839309, Time/step: 0.259036
+2026-05-08 11:41:29,254:INFO: Epoch: 15/50, Step: 160/535, Lr: , Loss: 3.786361, Time/step: 0.256788
+2026-05-08 11:41:41,690:INFO: Epoch: 15/50, Step: 210/535, Lr: , Loss: 3.457349, Time/step: 0.248716
+2026-05-08 11:41:54,086:INFO: Epoch: 15/50, Step: 260/535, Lr: , Loss: 3.483608, Time/step: 0.247892
+2026-05-08 11:42:06,100:INFO: Epoch: 15/50, Step: 310/535, Lr: , Loss: 3.137859, Time/step: 0.240274
+2026-05-08 11:42:18,389:INFO: Epoch: 15/50, Step: 360/535, Lr: , Loss: 3.713215, Time/step: 0.245769
+2026-05-08 11:42:30,524:INFO: Epoch: 15/50, Step: 410/535, Lr: , Loss: 3.019808, Time/step: 0.242698
+2026-05-08 11:42:43,601:INFO: Epoch: 15/50, Step: 460/535, Lr: , Loss: 3.501100, Time/step: 0.261529
+2026-05-08 11:42:56,288:INFO: Epoch: 15/50, Step: 510/535, Lr: , Loss: 4.124540, Time/step: 0.253734
+2026-05-08 11:43:02,030:INFO: Epoch 15/50 Finished, Train Loss: 3.550466
+2026-05-08 11:43:02,464:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.14
+2026-05-08 11:43:02,464:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.14
+2026-05-08 11:43:28,336:INFO: >>>  BLEU_1: 0.3732, BLEU_2: 0.2279, BLEU_3: 0.1424, BLEU_4: 0.0914
+2026-05-08 11:43:28,336:INFO: >>>  METEOR: 0.1227, ROUGE_L: 0.3143, CIDEr: 0.3968
+2026-05-08 11:43:28,337:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:43:35,340:INFO: Epoch: 16/50, Step: 25/535, Lr: , Loss: 3.365663, Time/step: 0.139630
+2026-05-08 11:43:47,490:INFO: Epoch: 16/50, Step: 75/535, Lr: , Loss: 3.232194, Time/step: 0.242987
+2026-05-08 11:44:00,016:INFO: Epoch: 16/50, Step: 125/535, Lr: , Loss: 3.399772, Time/step: 0.250497
+2026-05-08 11:44:12,749:INFO: Epoch: 16/50, Step: 175/535, Lr: , Loss: 3.296094, Time/step: 0.254650
+2026-05-08 11:44:25,249:INFO: Epoch: 16/50, Step: 225/535, Lr: , Loss: 3.331873, Time/step: 0.249987
+2026-05-08 11:44:37,981:INFO: Epoch: 16/50, Step: 275/535, Lr: , Loss: 3.224961, Time/step: 0.254632
+2026-05-08 11:44:50,474:INFO: Epoch: 16/50, Step: 325/535, Lr: , Loss: 3.638721, Time/step: 0.249864
+2026-05-08 11:45:03,358:INFO: Epoch: 16/50, Step: 375/535, Lr: , Loss: 3.235214, Time/step: 0.257669
+2026-05-08 11:45:16,026:INFO: Epoch: 16/50, Step: 425/535, Lr: , Loss: 3.825661, Time/step: 0.253340
+2026-05-08 11:45:28,632:INFO: Epoch: 16/50, Step: 475/535, Lr: , Loss: 3.025590, Time/step: 0.252119
+2026-05-08 11:45:41,322:INFO: Epoch: 16/50, Step: 525/535, Lr: , Loss: 3.286076, Time/step: 0.253782
+2026-05-08 11:45:43,399:INFO: Epoch 16/50 Finished, Train Loss: 3.361333
+2026-05-08 11:45:43,930:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.15
+2026-05-08 11:45:43,930:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.15
+2026-05-08 11:46:09,956:INFO: >>>  BLEU_1: 0.3529, BLEU_2: 0.2050, BLEU_3: 0.1212, BLEU_4: 0.0725
+2026-05-08 11:46:09,956:INFO: >>>  METEOR: 0.1157, ROUGE_L: 0.2988, CIDEr: 0.3083
+2026-05-08 11:46:09,957:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:46:20,554:INFO: Epoch: 17/50, Step: 40/535, Lr: , Loss: 3.221349, Time/step: 0.211523
+2026-05-08 11:46:33,113:INFO: Epoch: 17/50, Step: 90/535, Lr: , Loss: 3.120511, Time/step: 0.251166
+2026-05-08 11:46:45,600:INFO: Epoch: 17/50, Step: 140/535, Lr: , Loss: 3.230701, Time/step: 0.249718
+2026-05-08 11:46:57,984:INFO: Epoch: 17/50, Step: 190/535, Lr: , Loss: 2.941129, Time/step: 0.247668
+2026-05-08 11:47:10,507:INFO: Epoch: 17/50, Step: 240/535, Lr: , Loss: 3.153337, Time/step: 0.250464
+2026-05-08 11:47:22,986:INFO: Epoch: 17/50, Step: 290/535, Lr: , Loss: 3.201572, Time/step: 0.249559
+2026-05-08 11:47:35,726:INFO: Epoch: 17/50, Step: 340/535, Lr: , Loss: 3.265452, Time/step: 0.254794
+2026-05-08 11:47:48,010:INFO: Epoch: 17/50, Step: 390/535, Lr: , Loss: 3.137888, Time/step: 0.245672
+2026-05-08 11:47:59,847:INFO: Epoch: 17/50, Step: 440/535, Lr: , Loss: 3.050918, Time/step: 0.236724
+2026-05-08 11:48:12,706:INFO: Epoch: 17/50, Step: 490/535, Lr: , Loss: 2.974373, Time/step: 0.257175
+2026-05-08 11:48:23,329:INFO: Epoch 17/50 Finished, Train Loss: 3.181965
+2026-05-08 11:48:23,748:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.16
+2026-05-08 11:48:23,749:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.16
+2026-05-08 11:48:49,456:INFO: >>>  BLEU_1: 0.3829, BLEU_2: 0.2402, BLEU_3: 0.1533, BLEU_4: 0.0988
+2026-05-08 11:48:49,456:INFO: >>>  METEOR: 0.1278, ROUGE_L: 0.3218, CIDEr: 0.3888
+2026-05-08 11:48:49,456:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:48:51,475:INFO: Epoch: 18/50, Step: 5/535, Lr: , Loss: 3.270095, Time/step: 0.039945
+2026-05-08 11:49:03,573:INFO: Epoch: 18/50, Step: 55/535, Lr: , Loss: 3.215029, Time/step: 0.241954
+2026-05-08 11:49:16,177:INFO: Epoch: 18/50, Step: 105/535, Lr: , Loss: 2.762912, Time/step: 0.252072
+2026-05-08 11:49:28,600:INFO: Epoch: 18/50, Step: 155/535, Lr: , Loss: 2.729030, Time/step: 0.248444
+2026-05-08 11:49:40,610:INFO: Epoch: 18/50, Step: 205/535, Lr: , Loss: 2.791292, Time/step: 0.240199
+2026-05-08 11:49:52,804:INFO: Epoch: 18/50, Step: 255/535, Lr: , Loss: 3.125951, Time/step: 0.243864
+2026-05-08 11:50:04,897:INFO: Epoch: 18/50, Step: 305/535, Lr: , Loss: 3.560098, Time/step: 0.241843
+2026-05-08 11:50:16,689:INFO: Epoch: 18/50, Step: 355/535, Lr: , Loss: 2.826197, Time/step: 0.235842
+2026-05-08 11:50:29,051:INFO: Epoch: 18/50, Step: 405/535, Lr: , Loss: 3.049204, Time/step: 0.247233
+2026-05-08 11:50:41,391:INFO: Epoch: 18/50, Step: 455/535, Lr: , Loss: 3.084954, Time/step: 0.246793
+2026-05-08 11:50:53,786:INFO: Epoch: 18/50, Step: 505/535, Lr: , Loss: 2.831820, Time/step: 0.247889
+2026-05-08 11:51:00,901:INFO: Epoch 18/50 Finished, Train Loss: 3.004918
+2026-05-08 11:51:01,406:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.17
+2026-05-08 11:51:01,406:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.17
+2026-05-08 11:51:27,027:INFO: >>>  BLEU_1: 0.3781, BLEU_2: 0.2341, BLEU_3: 0.1462, BLEU_4: 0.0931
+2026-05-08 11:51:27,027:INFO: >>>  METEOR: 0.1248, ROUGE_L: 0.3095, CIDEr: 0.3492
+2026-05-08 11:51:27,027:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:51:32,941:INFO: Epoch: 19/50, Step: 20/535, Lr: , Loss: 2.691038, Time/step: 0.117808
+2026-05-08 11:51:45,543:INFO: Epoch: 19/50, Step: 70/535, Lr: , Loss: 3.158968, Time/step: 0.252035
+2026-05-08 11:51:58,292:INFO: Epoch: 19/50, Step: 120/535, Lr: , Loss: 2.693605, Time/step: 0.254968
+2026-05-08 11:52:10,375:INFO: Epoch: 19/50, Step: 170/535, Lr: , Loss: 2.961808, Time/step: 0.241647
+2026-05-08 11:52:22,916:INFO: Epoch: 19/50, Step: 220/535, Lr: , Loss: 3.254154, Time/step: 0.250820
+2026-05-08 11:52:35,316:INFO: Epoch: 19/50, Step: 270/535, Lr: , Loss: 2.920140, Time/step: 0.247978
+2026-05-08 11:52:47,997:INFO: Epoch: 19/50, Step: 320/535, Lr: , Loss: 2.989380, Time/step: 0.253607
+2026-05-08 11:53:00,640:INFO: Epoch: 19/50, Step: 370/535, Lr: , Loss: 3.299241, Time/step: 0.252864
+2026-05-08 11:53:13,439:INFO: Epoch: 19/50, Step: 420/535, Lr: , Loss: 2.854835, Time/step: 0.255970
+2026-05-08 11:53:26,071:INFO: Epoch: 19/50, Step: 470/535, Lr: , Loss: 3.060223, Time/step: 0.252626
+2026-05-08 11:53:38,732:INFO: Epoch: 19/50, Step: 520/535, Lr: , Loss: 3.200380, Time/step: 0.253215
+2026-05-08 11:53:42,039:INFO: Epoch 19/50 Finished, Train Loss: 2.848967
+2026-05-08 11:53:42,461:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.18
+2026-05-08 11:53:42,461:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.18
+2026-05-08 11:54:08,585:INFO: >>>  BLEU_1: 0.3618, BLEU_2: 0.2193, BLEU_3: 0.1359, BLEU_4: 0.0846
+2026-05-08 11:54:08,585:INFO: >>>  METEOR: 0.1198, ROUGE_L: 0.3075, CIDEr: 0.3568
+2026-05-08 11:54:08,585:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:54:17,922:INFO: Epoch: 20/50, Step: 35/535, Lr: , Loss: 2.730990, Time/step: 0.186311
+2026-05-08 11:54:30,465:INFO: Epoch: 20/50, Step: 85/535, Lr: , Loss: 2.448581, Time/step: 0.250836
+2026-05-08 11:54:42,771:INFO: Epoch: 20/50, Step: 135/535, Lr: , Loss: 2.745004, Time/step: 0.246115
+2026-05-08 11:54:55,520:INFO: Epoch: 20/50, Step: 185/535, Lr: , Loss: 2.791234, Time/step: 0.254976
+2026-05-08 11:55:08,150:INFO: Epoch: 20/50, Step: 235/535, Lr: , Loss: 2.480025, Time/step: 0.252585
+2026-05-08 11:55:20,824:INFO: Epoch: 20/50, Step: 285/535, Lr: , Loss: 2.393330, Time/step: 0.253478
+2026-05-08 11:55:33,115:INFO: Epoch: 20/50, Step: 335/535, Lr: , Loss: 2.623371, Time/step: 0.245797
+2026-05-08 11:55:44,977:INFO: Epoch: 20/50, Step: 385/535, Lr: , Loss: 2.748013, Time/step: 0.237239
+2026-05-08 11:55:57,922:INFO: Epoch: 20/50, Step: 435/535, Lr: , Loss: 2.459066, Time/step: 0.258882
+2026-05-08 11:56:10,282:INFO: Epoch: 20/50, Step: 485/535, Lr: , Loss: 2.899180, Time/step: 0.247186
+2026-05-08 11:56:22,581:INFO: Epoch: 20/50, Step: 535/535, Lr: , Loss: 2.562923, Time/step: 0.245980
+2026-05-08 11:56:22,625:INFO: Epoch 20/50 Finished, Train Loss: 2.714077
+2026-05-08 11:56:23,041:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.19
+2026-05-08 11:56:23,041:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.19
+2026-05-08 11:56:48,958:INFO: >>>  BLEU_1: 0.3837, BLEU_2: 0.2256, BLEU_3: 0.1382, BLEU_4: 0.0848
+2026-05-08 11:56:48,958:INFO: >>>  METEOR: 0.1252, ROUGE_L: 0.3065, CIDEr: 0.3399
+2026-05-08 11:56:48,959:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:57:02,195:INFO: Epoch: 21/50, Step: 50/535, Lr: , Loss: 2.276357, Time/step: 0.264301
+2026-05-08 11:57:13,835:INFO: Epoch: 21/50, Step: 100/535, Lr: , Loss: 2.994193, Time/step: 0.232782
+2026-05-08 11:57:25,419:INFO: Epoch: 21/50, Step: 150/535, Lr: , Loss: 2.543110, Time/step: 0.231685
+2026-05-08 11:57:37,677:INFO: Epoch: 21/50, Step: 200/535, Lr: , Loss: 2.881298, Time/step: 0.245140
+2026-05-08 11:57:49,270:INFO: Epoch: 21/50, Step: 250/535, Lr: , Loss: 2.809597, Time/step: 0.231848
+2026-05-08 11:58:01,588:INFO: Epoch: 21/50, Step: 300/535, Lr: , Loss: 2.425344, Time/step: 0.246353
+2026-05-08 11:58:13,684:INFO: Epoch: 21/50, Step: 350/535, Lr: , Loss: 2.656719, Time/step: 0.241911
+2026-05-08 11:58:26,399:INFO: Epoch: 21/50, Step: 400/535, Lr: , Loss: 2.815591, Time/step: 0.254294
+2026-05-08 11:58:39,426:INFO: Epoch: 21/50, Step: 450/535, Lr: , Loss: 2.242621, Time/step: 0.260525
+2026-05-08 11:58:51,472:INFO: Epoch: 21/50, Step: 500/535, Lr: , Loss: 2.435281, Time/step: 0.240908
+2026-05-08 11:58:58,959:INFO: Epoch 21/50 Finished, Train Loss: 2.610027
+2026-05-08 11:58:59,374:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.20
+2026-05-08 11:58:59,374:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.20
+2026-05-08 11:59:25,134:INFO: >>>  BLEU_1: 0.3559, BLEU_2: 0.2138, BLEU_3: 0.1299, BLEU_4: 0.0819
+2026-05-08 11:59:25,134:INFO: >>>  METEOR: 0.1202, ROUGE_L: 0.3062, CIDEr: 0.3469
+2026-05-08 11:59:25,134:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
+2026-05-08 11:59:29,510:INFO: Epoch: 22/50, Step: 15/535, Lr: , Loss: 2.407112, Time/step: 0.087088
+2026-05-08 11:59:42,211:INFO: Epoch: 22/50, Step: 65/535, Lr: , Loss: 2.417802, Time/step: 0.253996
+2026-05-08 11:59:54,915:INFO: Epoch: 22/50, Step: 115/535, Lr: , Loss: 2.867126, Time/step: 0.254067
+2026-05-08 12:00:07,130:INFO: Epoch: 22/50, Step: 165/535, Lr: , Loss: 2.453923, Time/step: 0.244289
+2026-05-08 12:00:19,644:INFO: Epoch: 22/50, Step: 215/535, Lr: , Loss: 2.594505, Time/step: 0.250274
+2026-05-08 12:00:32,101:INFO: Epoch: 22/50, Step: 265/535, Lr: , Loss: 2.768729, Time/step: 0.249140
+2026-05-08 12:00:44,900:INFO: Epoch: 22/50, Step: 315/535, Lr: , Loss: 2.510610, Time/step: 0.255969
+2026-05-08 12:00:57,609:INFO: Epoch: 22/50, Step: 365/535, Lr: , Loss: 2.409778, Time/step: 0.254166
+2026-05-08 12:01:10,728:INFO: Epoch: 22/50, Step: 415/535, Lr: , Loss: 2.797121, Time/step: 0.262363
+2026-05-08 12:01:23,371:INFO: Epoch: 22/50, Step: 465/535, Lr: , Loss: 2.463527, Time/step: 0.252855
+2026-05-08 12:01:35,497:INFO: Epoch: 22/50, Step: 515/535, Lr: , Loss: 2.825723, Time/step: 0.242499
+2026-05-08 12:01:39,954:INFO: Epoch 22/50 Finished, Train Loss: 2.520074
+2026-05-08 12:01:40,370:INFO: Model saved to ckpts/ckpt_spot_caption/pytorch_model.bin.21
+2026-05-08 12:01:40,371:INFO: Optimizer saved to ckpts/ckpt_spot_caption/pytorch_opt.bin.21
+2026-05-08 12:02:06,139:INFO: >>>  BLEU_1: 0.3649, BLEU_2: 0.2181, BLEU_3: 0.1300, BLEU_4: 0.0803
+2026-05-08 12:02:06,139:INFO: >>>  METEOR: 0.1201, ROUGE_L: 0.3020, CIDEr: 0.3339
+2026-05-08 12:02:06,139:INFO: The best model is: ckpts/ckpt_spot_caption/pytorch_model.bin.10, the CIDEr is: 0.4415
