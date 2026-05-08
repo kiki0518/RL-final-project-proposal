@@ -11,10 +11,10 @@ We evaluate the algorithms based on the following metrics:
 We consider the following recent state-of-the-art method as our primary baseline:
 
 \begin{itemize}
-    \item \textbf{ADPO} \citep{huang2025image}: An adversarial direct preference optimization framework that formulates image difference captioning (IDC) as a preference learning problem. It improves fine-grained difference alignment by coupling the captioning model with an adversarially trained hard-negative retriever to generate challenging counterfactual samples.
+    \item \textbf{CLIP4IDC} \citep{guo2022clip4idc}: A framework that leverages the pre-trained vision-language model, CLIP, to transfer cross-modal knowledge for image difference captioning. It aligns fine-grained visual differences with textual semantics to effectively capture and describe changes between image pairs.
 \end{itemize}
 
-ADPO is a strong baseline in IDC and represents a competitive preference optimization framework for vision-language alignment.
+CLIP4IDC is a strong baseline in IDC and represents a competitive representation learning framework for bridging visual differences and natural language descriptions.
 
 \subsection{Benchmark Tasks or Datasets}
 We evaluate the algorithms on several benchmark datasets widely used in the image difference captioning (IDC) literature:
