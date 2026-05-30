@@ -1,0 +1,71 @@
+\section{Project Overview}
+\label{section:intro}
+
+\subsection{Profile}
+
+\paragraph{Track: 3. Application}
+
+\paragraph{Abstract and project goal:}
+Image Difference Captioning (IDC) is a vision-language task that requires generating natural-language descriptions of fine-grained differences between highly similar image pairs \citep{jhamtani2018learning}. Unlike conventional image captioning, IDC demands precise localization and faithful grounding of subtle changes while preserving shared context.
+
+Recent approaches, such as Adversarial Direct Preference Optimization (ADPO), formulate IDC as a preference learning problem and leverage adversarially retrieved hard negatives to improve alignment \citep{huang-etal-2025-image}. However, these methods rely on Direct Preference Optimization (DPO), which is sensitive to the quality of negative samples and lacks explicit trajectory-level optimisation \citep{rafailov2023direct}.
+
+In this project, we reformulate IDC as a sequential decision-making problem and optimize caption generation using on-policy reinforcement learning. Specifically, we investigate Proximal Policy Optimization (PPO) to directly maximize sequence-level rewards that capture visual faithfulness and descriptive precision \citep{schulman2017proximalpolicyoptimizationalgorithms}. Additionally, we incorporate a contrastive objective to enforce alignment between generated captions and visual differences in embedding space \citep{radford2021learning}. We evaluate our approach on standard IDC benchmarks and compare against strong preference-based baselines.
+
+\paragraph{TL;DR (``Too Long; Didn't Read"):}
+
+We reformulate IDC as an MDP and replace DPO with on-policy RL (PPO) to improve robustness and fine-grained visual grounding.
+
+
+% Image Difference Captioning (IDC) is a vision-language task that requires generating natural-language descriptions of fine-grained differences between highly similar image pairs \citep{jhamtani2018learning}. Unlike conventional image captioning, IDC demands precise localization and faithful grounding of subtle changes while preserving shared context.
+
+% Recent approaches, such as Adversarial Direct Preference Optimization (ADPO), formulate IDC as a preference learning problem and leverage adversarially retrieved hard negatives to improve alignment \citep{huang-etal-2025-image}. However, these methods rely on Direct Preference Optimization (DPO), which is sensitive to the quality of negative samples and lacks explicit trajectory-level optimisation \citep{rafailov2023direct}.
+
+% In this project, we reformulate IDC as a sequential decision-making problem and optimize caption generation using on-policy reinforcement learning. Specifically, we investigate Proximal Policy Optimization (PPO) and Group Relative Policy Optimization (GRPO) to directly maximize sequence-level rewards that capture visual faithfulness and descriptive precision \citep{shao2024deepseekmath}. Additionally, we incorporate a contrastive objective to enforce alignment between generated captions and visual differences in embedding space \citep{radford2021learning}. We evaluate our approach on standard IDC benchmarks and compare against strong preference-based baselines.
+
+% \paragraph{TL;DR (``Too Long; Didn't Read"):}
+% We reformulate IDC as an MDP and replace DPO with on-policy RL (PPO/GRPO) to improve robustness and fine-grained visual grounding.
+
+\subsection{Motivation}
+\begin{itemize}
+
+\item \textbf{Why is the problem interesting?} IDC requires distinguishing subtle, localized differences between highly similar images, making it a challenging testbed for fine-grained vision-language alignment. It also naturally involves sequential decision-making, where each generated token contributes to a coherent and faithful description.
+
+\item \textbf{Critical challenges.}
+
+Challenge 1: Fine-grained grounding is difficult, as most image pairs are nearly identical and require precise localization of changes.
+
+Challenge 2: Preference-based methods depend heavily on negative sample quality and may not fully capture sequence-level dependencies.
+
+Challenge 3: Training stable and efficient reinforcement learning policies for language generation remains challenging.
+
+
+
+\item \textbf{Justify why the problem remains open or unsolved.} Existing methods either rely on supervised fine-tuning, which struggles with generalization, or preference-based optimization, which is sensitive to sampling strategies and lacks explicit control over long-horizon generation. This motivates exploring reinforcement learning approaches that directly optimize sequence-level objectives while improving robustness.
+
+
+
+\item \textbf{State-of-the-art methods.} ADPO represents the strongest baseline for IDC using preference optimization with adversarial negatives. \textbf{PPO is a standard and stable reinforcement learning method for sequence generation}, providing a robust framework for optimizing language policies through actor-critic architectures.
+
+\end{itemize}
+
+\subsubsection*{Expected Contribution of Each Team Member}
+
+\begin{itemize}
+\item \textbf{Eason Liou}: empirical evaluation, dataset selection and processing
+\item \textbf{Jia Chi Liou}: reward design, RLHF experiment setting and fine-tune parameters
+\item \textbf{Imrose Batterywala}: VLM experiment environment setting, result visualization and literature review
+
+\end{itemize}
+% \begin{itemize}
+%     \item \textbf{Why is the problem interesting?} IDC requires distinguishing subtle, localized differences between highly similar images, making it a challenging testbed for fine-grained vision-language alignment. It also naturally involves sequential decision-making, where each generated token contributes to a coherent and faithful description.
+
+%     \item \textbf{Critical challenges.}
+%     Challenge 1: Fine-grained grounding is difficult, as most image pairs are nearly identical and require precise localization of changes.
+%     Challenge 2: Preference-based methods depend heavily on negative sample quality and may not fully capture sequence-level dependencies.
+%     Challenge 3: Training stable and efficient reinforcement learning policies for language generation remains challenging.
+
+%     \item \textbf{Justify why the problem remains open or unsolved.} Existing methods either rely on supervised fine-tuning, which struggles with generalization, or preference-based optimization, which is sensitive to sampling strategies and lacks explicit control over long-horizon generation. This motivates exploring reinforcement learning approaches that directly optimize sequence-level objectives while improving robustness.
+
+%     \item \textbf{State-of-the-art methods.} ADPO represents the strongest baseline for IDC using preference optimization with adversarial negatives. PPO is a standard and stable reinforcement learning method for sequence generation, while GRPO offers a more efficient alternative by removing the critic through group-based baselines.
+% \end{itemize}

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Notebook / test caches
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Logs
+*.log
+
+# Local environments
+.env
+.venv/
+venv/
+
+# Model weights and outputs
+ckpts/
+modules/ViT-B-32.pt
+toy_*.png
+
+# Local datasets and archives
+spot-the-diff/
+toy-spot/
+toy-gt/
+resized_images.zip
+
+# OS files
+.DS_Store

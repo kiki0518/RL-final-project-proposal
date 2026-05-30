@@ -1,0 +1,14 @@
+numpy==1.24.3
+opencv-python==4.13.0.92
+pandas==2.0.3
+Pillow==9.3.0
+matplotlib==3.7.5
+scikit-image==0.21.0
+ftfy==6.2.3
+regex==2024.11.6
+tqdm==4.67.3
+boto3==1.37.38
+requests==2.32.4
+pycocotools==2.0.7
+gdown==5.2.2
+pycocoevalcap @ git+https://github.com/salaniz/pycocoevalcap.git@a24f74c408c918f1f4ec34e9514bc8a76ce41ffd

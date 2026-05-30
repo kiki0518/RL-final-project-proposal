@@ -1,0 +1,48 @@
+\section{Experimental Results}
+\label{section:exp}
+
+\subsection{Baseline Paper Results}
+\label{section:exp:baseline}
+
+Table~\ref{tab:spot-baseline-results} summarizes the Spot-the-Diff test results reported in the baseline paper. CLIP4IDC achieves the strongest performance among the compared methods, with 11.6 BLEU-4, 14.2 METEOR, 47.4 CIDEr, and 35.0 ROUGE-L.
+
+\begin{table}[t]
+\centering
+\caption{Spot-the-Diff test results reported in the baseline paper.}
+\label{tab:spot-baseline-results}
+\begin{tabular}{lcccc}
+\hline
+Model & BLEU-4 & METEOR & CIDEr & ROUGE-L \\
+\hline
+DDLA (2018) & 8.5 & 12.0 & 32.8 & 28.6 \\
+DUDA (2019) & 8.1 & 11.5 & 34.0 & 28.3 \\
+VAM (2020) & 10.1 & 12.4 & 38.1 & 31.3 \\
+IFDC (2021) & 8.7 & 11.7 & 37.0 & 30.2 \\
+DUDA+Aux (2021) & 8.1 & 12.5 & 34.5 & 29.9 \\
+VACC (2021) & 9.7 & 12.6 & 41.5 & 32.1 \\
+CLIP4IDC & 11.6 & 14.2 & 47.4 & 35.0 \\
+CC-Full (2022) & 8.3 & 13.0 & 33.0 & 30.0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Toy Tasks}
+\label{section:exp:toy}
+
+For a simple toy setting, we normalize every reference caption in a small Spot-the-Diff subset to the single template ``people are gone'' and evaluate the released CLIP4IDC checkpoint without additional training. On the 40-example toy test split, the model achieves 23.72 BLEU-1, 9.34 BLEU-2, 4.22 BLEU-3, 0.00 BLEU-4, 16.11 METEOR, 25.69 ROUGE-L, and 0.00 CIDEr, indicating that the released checkpoint does not directly match this simplified target distribution.
+
+\begin{figure}[t]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.22\textwidth]{toy-spot/images/9662.png} &
+\includegraphics[width=0.22\textwidth]{toy-spot/images/9662_2.png} \\
+\small Before & \small After \\
+\multicolumn{2}{p{0.46\textwidth}}{\small \textbf{Reference:} people are gone. \textbf{Prediction:} the people in the parking lot are gone.} \\[0.6em]
+\includegraphics[width=0.22\textwidth]{toy-spot/images/12895.png} &
+\includegraphics[width=0.22\textwidth]{toy-spot/images/12895_2.png} \\
+\small Before & \small After \\
+\multicolumn{2}{p{0.46\textwidth}}{\small \textbf{Reference:} people are gone. \textbf{Prediction:} there are two people walking in the parking.}
+\end{tabular}
+\caption{Qualitative examples from the toy Spot-the-Diff task. The top example is close to the toy target, while the bottom example stays in the original Spot-the-Diff caption style.}
+\label{fig:toy-spot-qualitative}
+\end{figure}
