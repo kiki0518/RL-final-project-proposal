@@ -64,7 +64,7 @@ def get_args(description='CLIP4Clip on Retrieval Task'):
                              "See details at https://nvidia.github.io/apex/amp.html")
 
     parser.add_argument("--task_type", default="caption", type=str, help="Point the task `retrieval` to finetune.")
-    parser.add_argument("--datatype", default="clevr", type=str, help="Point the dataset to finetune.")
+    parser.add_argument("--datatype", default="spot", type=str, help="Point the dataset to finetune.")
 
     parser.add_argument('--text_num_hidden_layers', type=int, default=12, help="Layer NO. of text.")
     parser.add_argument('--visual_num_hidden_layers', type=int, default=12, help="Layer NO. of visual.")
@@ -181,48 +181,29 @@ def visualize_epoch(args, model, test_dataloader, device):
 
     image_names = batch[-1]
 
-    if args.datatype == "clevr":
-        bef_image, aft_image, nc_image = torch.from_numpy(batch[3]).to(device), torch.from_numpy(batch[4]).to(device), torch.from_numpy(batch[5]).to(device)
-        bef_image = bef_image.unsqueeze(1)
-        nc_image = nc_image.unsqueeze(1)
-        nc_video = torch.cat([bef_image, nc_image], 1)
-    else:
-        bef_image, aft_image = torch.from_numpy(batch[3]).to(device), torch.from_numpy(batch[4]).to(device)
-        bef_image = bef_image.unsqueeze(1)
+    bef_image, aft_image = torch.from_numpy(batch[3]).to(device), torch.from_numpy(batch[4]).to(device)
+    bef_image = bef_image.unsqueeze(1)
 
     aft_image = aft_image.unsqueeze(1)
     video = torch.cat([bef_image, aft_image], 1)
 
-    if args.datatype == "clevr":
-        bef_image_paths = os.path.join(args.features_path, "images", "CLEVR_default_%s" % image_names)
-        aft_image_paths = os.path.join(args.features_path, "sc_images", "CLEVR_semantic_%s" % image_names)
-    elif args.datatype == "spot":
-        bef_image_paths = os.path.join(args.features_path, image_names)
-        aft_image_paths = os.path.join(args.features_path, image_names.replace(".png", "_2.png"))
+    bef_image_paths = os.path.join(args.features_path, image_names)
+    aft_image_paths = os.path.join(args.features_path, image_names.replace(".png", "_2.png"))
 
     with torch.no_grad():
         video, video_frame = reshape_input(video)
         _, attn_weights = model.clip.visual(video.type(model.clip.dtype), video_frame=video_frame, visualize=True)
 
         visualize(attn_weights, bef_image_paths, aft_image_paths)
-        if args.datatype == "clevr":
-            nc_video, nc_video_frame = reshape_input(nc_video)
-            _, nc_attn_weights = model.clip.visual(nc_video.type(model.clip.dtype), video_frame=nc_video_frame, visualize=True)
-            aft_image_paths = os.path.join(args.features_path, "nsc_images", "CLEVR_nonsemantic_%s" % image_names)
-            visualize(nc_attn_weights, bef_image_paths, aft_image_paths)
 
 
 if __name__ == '__main__':
     args = get_args()
 
-    args.data_path = "your_data/clevr_change/data"
-    args.features_path = "your_data/clevr_change/data"
-
-    ## clevr or spot
-    args.datatype = "clevr"
-
-    ## Load either pretrained (Retrieval) or trained (Caption) model
-    args.init_model = "ckpts/trained/pytorch_model.bin.clevr"
+    args.data_path = "spot-the-diff"
+    args.features_path = "spot-the-diff/images"
+    args.datatype = "spot"
+    args.init_model = "ckpts/trained/pytorch_model.bin.spot"
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

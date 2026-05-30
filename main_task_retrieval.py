@@ -69,7 +69,7 @@ def get_args(description='CLIP4IDC on Retrieval Task'):
                              "See details at https://nvidia.github.io/apex/amp.html")
 
     parser.add_argument("--task_type", default="retrieval", type=str, help="Point the task `retrieval` to finetune.")
-    parser.add_argument("--datatype", default="msrvtt", type=str, help="Point the dataset to finetune.")
+    parser.add_argument("--datatype", default="spot", type=str, help="Point the dataset to finetune.")
 
     parser.add_argument("--world_size", default=0, type=int, help="distribted training")
     parser.add_argument("--local_rank", default=0, type=int, help="distribted training")

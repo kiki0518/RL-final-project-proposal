@@ -124,7 +124,7 @@ def get_args(description='CLIP4IDC on Captioning Task'):
                              "See details at https://nvidia.github.io/apex/amp.html")
 
     parser.add_argument("--task_type", default="caption", type=str, help="Point the task `retrieval` or `caption` to finetune.")
-    parser.add_argument("--datatype", default="msrvtt", type=str, help="Point the dataset to finetune.")
+    parser.add_argument("--datatype", default="spot", type=str, help="Point the dataset to finetune.")
 
     parser.add_argument("--world_size", default=0, type=int, help="distribted training")
     parser.add_argument("--local_rank", default=0, type=int, help="distribted training")
@@ -162,15 +162,14 @@ def get_args(description='CLIP4IDC on Captioning Task'):
 def set_seed_logger(args):
     global logger
     # predefining random initial seeds
-    if args.datatype == "clevr":
-        random.seed(args.seed)
-        os.environ['PYTHONHASHSEED'] = str(args.seed)
-        np.random.seed(args.seed)
-        torch.manual_seed(args.seed)
-        torch.cuda.manual_seed(args.seed)
-        torch.cuda.manual_seed_all(args.seed)  # if you are using multi-GPU.
-        torch.backends.cudnn.benchmark = False
-        torch.backends.cudnn.deterministic = True
+    random.seed(args.seed)
+    os.environ['PYTHONHASHSEED'] = str(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.cuda.manual_seed(args.seed)
+    torch.cuda.manual_seed_all(args.seed)  # if you are using multi-GPU.
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
 
     world_size = torch.distributed.get_world_size()
     torch.cuda.set_device(args.local_rank)
@@ -311,25 +310,12 @@ def train_epoch(epoch, args, model, train_dataloader, device, n_gpu, optimizer, 
         image_name = batch[-1]
         batch = tuple(t.to(device=device, non_blocking=True) for t in batch[:-1])
 
-        if args.datatype == "clevr":
-            input_ids, input_mask, segment_ids, bef_image, aft_image, no_image, image_mask, \
-            pairs_input_caption_ids, pairs_decoder_mask, pairs_output_caption_ids, \
-            no_pairs_input_caption_ids, no_pairs_decoder_mask, no_pairs_output_caption_ids = batch
+        input_ids, input_mask, segment_ids, bef_image, aft_image, image_mask, \
+        pairs_input_caption_ids, pairs_decoder_mask, pairs_output_caption_ids = batch
 
-            loss1 = model(input_ids, segment_ids, input_mask, bef_image, aft_image, image_mask,
-                         input_caption_ids=pairs_input_caption_ids, decoder_mask=pairs_decoder_mask,
-                         output_caption_ids=pairs_output_caption_ids)
-            loss2 = model(input_ids, segment_ids, input_mask, bef_image, no_image, image_mask,
-                         input_caption_ids=no_pairs_input_caption_ids, decoder_mask=no_pairs_decoder_mask,
-                         output_caption_ids=no_pairs_output_caption_ids)
-            loss = loss1 + loss2
-        else:
-            input_ids, input_mask, segment_ids, bef_image, aft_image, image_mask, \
-            pairs_input_caption_ids, pairs_decoder_mask, pairs_output_caption_ids = batch
-
-            loss = model(input_ids, segment_ids, input_mask, bef_image, aft_image, image_mask,
-                         input_caption_ids=pairs_input_caption_ids, decoder_mask=pairs_decoder_mask,
-                         output_caption_ids=pairs_output_caption_ids)
+        loss = model(input_ids, segment_ids, input_mask, bef_image, aft_image, image_mask,
+                     input_caption_ids=pairs_input_caption_ids, decoder_mask=pairs_decoder_mask,
+                     output_caption_ids=pairs_output_caption_ids)
 
         if n_gpu > 1:
             loss = loss.mean()  # mean() to average on multi-gpu.
@@ -562,28 +548,18 @@ def eval_epoch(args, model, test_dataloader, tokenizer, device, n_gpu, test_set=
         model = model.to(device)
 
     all_result_lists = []
-    all_nc_result_lists = []
     model.eval()
     with torch.no_grad():
         for i, batch in enumerate(test_dataloader):
             image_names = batch[-1]
             batch = tuple(t.to(device, non_blocking=True) for t in batch[:-1])
 
-            if args.datatype == "clevr":
-                input_ids, input_mask, segment_ids, bef_image, aft_image, nc_image, image_mask, \
-                pairs_input_caption_ids, pairs_decoder_mask, pairs_output_caption_ids, \
-                nc_pairs_input_caption_ids, nc_pairs_decoder_mask, nc_pairs_output_caption_ids = batch
-
-                nc_image_pair = torch.cat([bef_image, nc_image], 1)
-            else:
-                input_ids, input_mask, segment_ids, bef_image, aft_image, image_mask, \
-                pairs_input_caption_ids, pairs_decoder_mask, pairs_output_caption_ids = batch
+            input_ids, input_mask, segment_ids, bef_image, aft_image, image_mask, \
+            pairs_input_caption_ids, pairs_decoder_mask, pairs_output_caption_ids = batch
 
             image_pair = torch.cat([bef_image, aft_image], 1)
 
             result_list = greedy_decode(args, model, tokenizer, input_ids, segment_ids, input_mask, image_pair, image_mask)
-            if args.datatype == "clevr":
-                nc_result_list = greedy_decode(args, model, tokenizer, input_ids, segment_ids, input_mask, nc_image_pair, image_mask)
 
             for re_idx, (image_name, re_list) in enumerate(zip(image_names, result_list)):
                 decode_text_list = tokenizer.convert_ids_to_tokens(re_list)
@@ -597,26 +573,14 @@ def eval_epoch(args, model, test_dataloader, tokenizer, device, n_gpu, test_set=
                 new_decode_item = {"caption": decode_text, "image_id": image_name}
                 all_result_lists.append(new_decode_item)
 
-            if args.datatype == "clevr":
-                for re_idx, (image_name, re_list) in enumerate(zip(image_names, nc_result_list)):
-                    decode_text_list = tokenizer.convert_ids_to_tokens(re_list)
-                    if "<|endoftext|>" in decode_text_list:
-                        SEP_index = decode_text_list.index("<|endoftext|>")
-                        decode_text_list = decode_text_list[:SEP_index]
-                    if "!" in decode_text_list:
-                        PAD_index = decode_text_list.index("!")
-                        decode_text_list = decode_text_list[:PAD_index]
-                    decode_text = decode_text_list.strip()
-                    new_decode_item = {"caption": decode_text, "image_id": image_name + "_n"}
-                    all_nc_result_lists.append(new_decode_item)
-
-    total_results = all_result_lists + all_nc_result_lists
-    json.dump(total_results, open(os.path.join(args.output_dir, "hyp_ep_%s.json" % epoch), "w"))
+    json.dump(all_result_lists, open(os.path.join(args.output_dir, "hyp_ep_%s.json" % epoch), "w"))
     assert os.path.exists(os.path.join(args.output_dir, "hyp_ep_%s.json" % epoch))
 
     # Evaluate
-    metrics_nlg = score_generation(os.path.join(args.gt_dir, "%s_total_change_captions_reformat.json" % args.datatype),
-                                   os.path.join(args.output_dir, "hyp_ep_%s.json" % epoch))
+    metrics_nlg = score_generation(
+        os.path.join(args.gt_dir, "%s_total_change_captions_reformat.json" % args.datatype),
+        os.path.join(args.output_dir, "hyp_ep_%s.json" % epoch),
+    )
 
     logger.info(">>>  BLEU_1: {:.4f}, BLEU_2: {:.4f}, BLEU_3: {:.4f}, BLEU_4: {:.4f}".
                 format(metrics_nlg["Bleu_1"], metrics_nlg["Bleu_2"], metrics_nlg["Bleu_3"], metrics_nlg["Bleu_4"]))
