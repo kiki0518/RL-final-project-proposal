@@ -19,6 +19,8 @@ venv/
 ckpts/
 modules/ViT-B-32.pt
 toy_*.png
+outputs/
+prepared/
 
 # Local datasets and archives
 spot-the-diff/
